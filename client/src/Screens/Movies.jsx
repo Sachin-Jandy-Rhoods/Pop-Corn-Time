@@ -3,6 +3,7 @@ import Layout from '../Layout/Layout';
 import Filters from '../Components/Filters';
 import { Movies } from '../Data/MoviesData';
 import { CgSpinner } from "react-icons/cg";
+import Movie from '../Components/Movie';
 
 
 const MoviesPage = () => {
