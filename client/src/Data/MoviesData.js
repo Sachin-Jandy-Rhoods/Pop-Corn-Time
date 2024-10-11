@@ -2,7 +2,7 @@ export const Movies = [
     {
         name: 'Army Of The Dead',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '1a.jpg',
+        titleImage: '1a.jpg',
         image: '1.jpg',
         category:'Western',
         Language:'English',
@@ -15,7 +15,7 @@ export const Movies = [
     {
         name: 'The Conjuring',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '22.jpeg',
+        titleImage: '22.jpeg',
         image: '2.jpeg',
         category:'Thriller',
         Language:'Chinese',
@@ -28,7 +28,7 @@ export const Movies = [
     {
         name: 'My Favourite Person',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '33.jpg',
+        titleImage: '33.jpg',
         image: '3.jpg',
         category:'Adventure',
         Language:'Korean',
@@ -41,7 +41,7 @@ export const Movies = [
     {
         name: 'Lets Be a Crops',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '44.jpg',
+        titleImage: '44.jpg',
         image: '4.jpg',
         category:'Musicals',
         Language:'English',
@@ -54,7 +54,7 @@ export const Movies = [
     {
         name: 'Below Her Mouth',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '55.jpg',
+        titleImage: '55.jpg',
         image: '5.jpg',
         category:'Romantic',
         Language:'English',
@@ -67,7 +67,7 @@ export const Movies = [
     {
         name: 'Legends of the Seeker',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '66.jpg',
+        titleImage: '66.jpg',
         image: '6.jpg',
         category:'Horror',
         Language:'Swahili',
@@ -80,7 +80,7 @@ export const Movies = [
     {
         name: 'Scarlet Heart',
         desc:'Lorem ipsum dolor sit amet, consecetue adipicing elseddo eiusmod There',
-        tittleImage: '77.jpg',
+        titleImage: '77.jpg',
         image: '7.png',
         category:'Fantasy',
         Language:'Korean',
@@ -93,7 +93,7 @@ export const Movies = [
     {
         name: 'The Great Escape',
         desc: 'An epic journey through unknown lands, full of thrilling moments and suspense.',
-        tittleImage: '88.jpg',
+        titleImage: '88.jpg',
         image: '8.jpg',
         category: 'Action',
         language: 'English',
@@ -106,7 +106,7 @@ export const Movies = [
     {
         name: 'Whispers in the Dark',
         desc: 'A mysterious tale of love and secrets hidden deep in the shadows.',
-        tittleImage: '99.jpg',
+        titleImage: '99.jpg',
         image: '9.jpg',
         category: 'Drama',
         language: 'French',
