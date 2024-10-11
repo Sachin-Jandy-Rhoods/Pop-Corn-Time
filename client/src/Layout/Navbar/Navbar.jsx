@@ -2,7 +2,7 @@ import React from 'react'
 import {FaHeart, FaSearch} from 'react-icons/fa' 
 import {CgUser} from "react-icons/cg"
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../../../public/logo.jpg'
+import logo from '../../../public/logo.png'
 
 
 const Navbar = () => {

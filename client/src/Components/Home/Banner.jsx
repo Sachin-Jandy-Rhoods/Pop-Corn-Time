@@ -2,8 +2,7 @@ import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Movies } from "../../Data/MoviesData";
-import image from "../../../public/images/1.jpg";
-import FlexMovieItems from "./FlexMovieItems";
+import FlexMovieItems from "../Home/FlexMovieItems";
 import { Link } from 'react-router-dom'
 import { FaHeart } from "react-icons/fa";
 
