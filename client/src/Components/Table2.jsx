@@ -1,135 +1,120 @@
-// import React from 'react'
-// import { FaCloudDownloadAlt } from 'react-icons/fa';
-// import { FiEdit } from 'react-icons/fi';
-// import {MdDelete} from 'react-icons/md';
-// import {GoEye} from 'react-icons/go';
-// import { Link } from 'react-router-dom';
-// const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
-// const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
-// import 
+import React from 'react'
+import { FaEdit } from 'react-icons/fa';
+import { FiEdit } from 'react-icons/fi';
+import {MdDelete} from 'react-icons/md';
 
-// const Rows = (data, i , users) =>{
-//     return(
-//         <tr key={i}>
-//             {
-//                 users?(
-//                     <>
-//                         <td className={`${Text}`}>
-//                 <div className='w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden'>
+const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
+const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
 
-//                 <img className='h-full w-full object-cover'
-//                 src={`../../public/images/${movie.titleImage}`}
-//                  alt="movie.?title" />
-//                 </div>
+
+const Rows = (data, i , users) =>{
+    return(
+        <tr key={i}>
+            {/* users */}
+            {
+                users?(
+                    <>
+                        <td className={`${Text}`}>
+                <div className='w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden'>
+
+                <img className='h-full w-full object-cover'
+                src={`../../public/images/${data.image ? data.image : "user.png"}`}
+                 alt={data?.fullName} />
+                </div>
                 
-//             </td>
-//             <td className={`${Text} truncate`}>{movie.name}</td>
-//             <td className={`${Text}`}>{movie.category}</td>
-//             <td className={`${Text}`}>{movie.language}</td>
-//             <td className={`${Text}`}>{movie.year}</td>
-//                     </>
-//                 )
-//             }
-//             <td className={`${Text}`}>
-//                 <div className='w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden'>
-
-//                 <img className='h-full w-full object-cover'
-//                 src={`../../public/images/${movie.titleImage}`}
-//                  alt="movie.?title" />
-//                 </div>
-                
-//             </td>
-//             <td className={`${Text} truncate`}>{movie.name}</td>
-//             <td className={`${Text}`}>{movie.category}</td>
-//             <td className={`${Text}`}>{movie.language}</td>
-//             <td className={`${Text}`}>{movie.year}</td>
-//             <td className={`${Text}`}>{movie.time}</td>
-//             <td className={`${Text} float-right flex-rows gap-2`}>
-//                 {
-//                     admin ? (
-//                         <>
-//                          <button className='border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2'>
-//                     Edit <FiEdit className='text-green-500'/>
-//                 </button>
-//                 <button className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
-//                      <MdDelete/>
-//                 </button>
-//                         </>
-//                     )
-//                     :(
-//                         <>
-//                          <button className='border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2'>
-//                     Download
-//                      <FaCloudDownloadAlt className='text-green-500'/>
-//                 </button>
-//                 <Link to={`/movie/${movie.name}`} className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
-//                      <GoEye/>
-//                 </Link>
-//                         </>
-//                     )}  
-//             </td>
-//         </tr>
-//     )
-// }
-// //table
-// const Table2 = ({data,users}) => {
+            </td>
+            <td className={`${Text}`}>{data?._id ?data._id:"2R75T8"}</td>
+            <td className={`${Text}`}>{data.createAt ?data.createAt :"12, jan 2023"}</td>
+            <td className={`${Text}`}>{data.fullName}</td>
+            <td className={`${Text}`}>{data.email}</td>
+            <td className={`${Text} float-right flex-rows gap-2`}>
+                <button className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
+                     <MdDelete/>
+                </button>
+                        </td>
+                    </>
+                )
+                :(
+                    // Categories
+                   <>
+                    <td className={`${Text} font-bold`}>2R75T8</td>
+            <td className={`${Text}`}>{data.createAt ?data.createAt :"12, jan 2023"}</td>
+            <td className={`${Text}`}>{data.title}</td>
+            <td className={`${Text} float-right flex-rows gap-2`}>
+                         <button className='border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2'>
+                    Edit <FiEdit className='text-green-500'/>
+                </button>
+                <button className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
+                     <MdDelete/>
+                </button>
+                       
+            </td>
+                   </> 
+                )
+            }
+                        
+        </tr>
+    )
+}
+//table
+const Table2 = ({data,users}) => {
   
 
-//   return (
-//     <div className='overflow-x-scroll sm:overflow-hidden relative w-full'>
-//         <table className='w-full table-auto border-border divide-y divide-border'>
-//             <thead>
-//                 <tr className='bg-dryGray'>
-//                     {
-//                         users?(
-//                             <>
-//                                 <th scope='col' className={`${Head}`}>
-//                         Image
-//                     </th>
-//                     <th scope='col' className={`${Head}`}>
-//                         Id
-//                     </th>
-//                     <th scope='col' className={`${Head}`}>
-//                         Date
-//                     </th>
-//                     <th scope='col' className={`${Head}`}>
-//                         Full Name
-//                     </th>
-//                     <th scope='col' className={`${Head}`}>
-//                         Email
-//                     </th>
-//                             </>
-//                         )
-//                         :
-//                         (
-//                             <>
-//                             <th scope='col' className={`${Head}`}>
-//                     Id
-//                 </th>
-//                 <th scope='col' className={`${Head}`}>
-//                 Date
-//                 </th>
-//                 <th scope='col' className={`${Head}`}>
-//                     Title
-//                 </th>
+  return (
+    <div className='overflow-x-scroll sm:overflow-hidden relative w-full'>
+        <table className='w-full table-auto border-border divide-y divide-border'>
+            <thead>
+                <tr className='bg-dryGray'>
+                    {
+                        users?(
+                            <>
+                                <th scope='col' className={`${Head}`}>
+                        Image
+                    </th>
+                    <th scope='col' className={`${Head}`}>
+                        Id
+                    </th>
+                    <th scope='col' className={`${Head}`}>
+                        Date
+                    </th>
+                    <th scope='col' className={`${Head}`}>
+                        Full Name
+                    </th>
+                    <th scope='col' className={`${Head}`}>
+                        Email
+                    </th>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                            <th scope='col' className={`${Head}`}>
+                    Id
+                </th>
+                <th scope='col' className={`${Head}`}>
+                Date
+                </th>
+                <th scope='col' className={`${Head}`}>
+                    Title
+                </th>
                 
-//                         </>
-//                         )
-//                     }
-//                     <th scope='col' className={`${Head} text-end`}>
-//                         Action
-//                     </th>
-//                 </tr>
-//             </thead>
-//             <tbody className='bg-main divide-y divide-gray-800'>
-//                 {
-//                     data.map((data,i)=>Rows(data,i,users))
-//                 }
-//             </tbody>
-//         </table>
-//     </div>
-//   )
+                        </>
+                        )
+                    }
+                    <th scope='col' className={`${Head} text-end`}>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody className='bg-main divide-y divide-gray-800'>
+                {
+                    data.map((data,i)=>Rows(data,i,users))
+                }
+            </tbody>
+        </table>
+    </div>
+  )
   
-// }
+}
 
-// export default Table2
+export default Table2
