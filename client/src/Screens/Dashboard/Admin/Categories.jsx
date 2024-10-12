@@ -1,7 +1,7 @@
 import React from 'react'
 import SideBar from './SideBar'
 import { HiPlusCircle } from 'react-icons/hi'
-// import Table2 from '../../../Components/Table2'
+import Table2 from '../../../Components/Table2'
 import {CategoriesData} from '../../../Data/CategoriesData'
 
 
@@ -16,7 +16,7 @@ const Categories = () => {
                    <HiPlusCircle/> Create
                     </button>
             </div>
-            {/* <Table2 data={CategoriesData} users={false}/> */}
+            <Table2 data={CategoriesData} users={false}/>
         </div>
     </SideBar>
   )
