@@ -91,11 +91,11 @@ const Footer = () => {
                     ))
                 }
 
-                <div className="pb-3 5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
+                <div className="pb-3 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
                     <Link to={"/"}>
-                            <img src={Logo} alt="logo" className='w-2/4 object-contain h-12'/>
+                            <img src={Logo} alt="logo" className='w-3/4 object-cover h-14'/>
                     </Link>
-                    <p className='leading-7 text-sm text-border mt-3'>
+                    <p className='leading-7 text-sm text-border md:mt-3'>
                         <span>
                         Dubai kuruku sandhu, Agra 200, <br/> Delhi, NY 10007
                         </span>
@@ -105,7 +105,7 @@ const Footer = () => {
                         </span>
                         <br />
                         <span>
-                            Email: sachinjandyrhoods@gmail.com
+                            Email: sachin@gmail.com
                         </span>
                        
                     </p>

@@ -40,6 +40,9 @@ input:focus, textarea:focus, select:focus{
   .transitions {
   @apply transition duration-300 ease-in;
   }
-  .zIndex {
+  /* .zIndex {
     z-index: 1000;
+  } */
+  body::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
   }
