@@ -1,7 +1,7 @@
 import React from 'react'
 import SideBar from './SideBar'
 import Uploder from '../../../Components/Uploder'
-// import {Input} from '../../../Components/UsedInputs'
+import { Input } from '../../../Components/UsedInputs'
 
 const Profile = () => {
   return (
@@ -9,13 +9,13 @@ const Profile = () => {
       <div className='flex flex-col gap-6'>
         <h2 className='text-xl font-bold'>Profile</h2>
         <Uploder/>
-        <input
+        <Input
           label="FullName"
           placeholder="netflexo react tailwind"
           type="text"
           bg={true}
         />
-        <input
+        <Input
           label="Email"
           placeholder="netflexo@gmail.com"
           type="email"

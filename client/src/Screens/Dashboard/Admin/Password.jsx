@@ -1,7 +1,6 @@
 import React from 'react'
 import SideBar from './SideBar'
-import { Input } from '@headlessui/react'
-// import {Input} from '../../../Components/UsedInputs'
+import { Input } from '../../../Components/UsedInputs'
 
 
 const Password = () => {
@@ -16,13 +15,13 @@ const Password = () => {
           type="password"
           bg={true}
         />
-        <input
+        <Input
           label="New Password"
           placeholder="********"
           type="password"
           bg={true}
         />
-         <input
+         <Input
           label="Confirm Password"
           placeholder="********"
           type="password"
