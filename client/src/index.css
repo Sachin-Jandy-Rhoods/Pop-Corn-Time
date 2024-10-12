@@ -40,3 +40,6 @@ input:focus, textarea:focus, select:focus{
   .transitions {
   @apply transition duration-300 ease-in;
   }
+  .zIndex {
+    z-index: 1000;
+  }
