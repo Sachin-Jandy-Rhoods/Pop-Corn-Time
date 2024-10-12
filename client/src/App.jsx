@@ -17,7 +17,9 @@ import MoviesPage from "./Screens/Movies";
 import SingleMovie from "./Screens/SingleMovie";
 import Register from "./Screens/Register";
 import Users from "./Screens/Dashboard/Admin/Users";
-import WatchPage from "./Screens/WatchPage";
+import WatchPage from "./Screens/WatchPage";import AddMovie from './Screens/Dashboard/Admin/AddMovie';
+import AddMovie from './Screens/Dashboard/Admin/AddMovie';
+
 
 const App = () => {
   useEffect(() => {
