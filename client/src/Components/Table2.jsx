@@ -16,9 +16,8 @@ const Rows = (data, i , users) =>{
                     <>
                         <td className={`${Text}`}>
                 <div className='w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden'>
-
                 <img className='h-full w-full object-cover'
-                src={`../../public/images/${data.image ? data.image : "user.png"}`}
+                src={`../../public/${data.image ? data.image : "user.png"}`}
                  alt={data?.fullName} />
                 </div>
                 

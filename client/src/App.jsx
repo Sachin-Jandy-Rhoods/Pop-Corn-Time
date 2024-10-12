@@ -15,6 +15,7 @@ import Login from './Screens/Login'
 import MoviesPage from './Screens/Movies'
 import SingleMovie from './Screens/SingleMovie'
 import Register from './Screens/Register'
+import Users from './Screens/Dashboard/Admin/Users';
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
       <Route path='/movieslist' element={<MovieList/>} />
       <Route path='/dashboard' element={<Dashboard/>} />
       <Route path='/categories' element={<Categories/>} />
+      <Route path='/users' element={<Users/>}/>
 
       
       
