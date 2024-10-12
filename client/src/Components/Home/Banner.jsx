@@ -35,7 +35,7 @@ export const Banner = () => {
               </div>
               <div className="flex gap-5 items-center">
                 <Link
-                  to={`/movie/${movie.id}`}
+                  to={`/movie/${movie?.name}`}
                   className="bg-subMain hover:text-main transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs"
                 >
                   Watch

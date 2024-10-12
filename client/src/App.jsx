@@ -17,7 +17,7 @@ import MoviesPage from "./Screens/Movies";
 import SingleMovie from "./Screens/SingleMovie";
 import Register from "./Screens/Register";
 import Users from "./Screens/Dashboard/Admin/Users";
-import WatchPage from "./Screens/WatchPage";import AddMovie from './Screens/Dashboard/Admin/AddMovie';
+import WatchPage from "./Screens/WatchPage";
 import AddMovie from './Screens/Dashboard/Admin/AddMovie';
 
 
@@ -36,6 +36,7 @@ const App = () => {
       <Route path="/movies" element={<MoviesPage />} />
       <Route path="/movie/:id" element={<SingleMovie />} />
       <Route path="/watch/:id" element={<WatchPage />} />
+      <Route path="/addmovie" element={<AddMovie/>}/>
       <Route path="/profile" element={<Profile />} />
       <Route path="/password" element={<Password />} />
       <Route path="/favourites" element={<FavouritesMovies />} />

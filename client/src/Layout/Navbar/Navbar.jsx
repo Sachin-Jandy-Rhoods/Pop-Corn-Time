@@ -11,12 +11,12 @@ const Navbar = () => {
   return (
     <>
     <div className="bg-main shadow-md sticky top-0 z-20">
-        <div className="container  mx-auto py-6 px-2 lg:grid gap-10 grid-cols-7 justify-between items-center">
+        <div className="container  mx-auto py-3 px-2 lg:grid gap-10 grid-cols-7 justify-between items-center">
 
             {/* Logo */}
             <div className="col-span-1 lg:block hidden">
-                <Link>
-                  <img src={logo} alt="logo" className='w-full h-12 object-contain' />
+                <Link to={"/"} >
+                  <img src={logo} alt="logo" className='w-full h-16 object-cover' />
                 </Link>
             </div>
             {/* Search Form */}
