@@ -7,6 +7,7 @@ import ContactUs from "./Screens/ContactUs";
 import Login from './Screens/Login'
 import MoviesPage from './Screens/Movies'
 import SingleMovie from './Screens/SingleMovie'
+import Register from './Screens/Register'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/about-us' element={<AboutUs/>}/>
         <Route path='/contact-us' element={<ContactUs/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
         <Route path='/movies' element={<MoviesPage/>}/>
         <Route path='/movie/:id' element={<SingleMovie/>}/>
         <Route path='*' element={<NotFound/>}/>

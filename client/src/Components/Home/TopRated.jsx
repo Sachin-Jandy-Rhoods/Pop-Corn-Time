@@ -22,7 +22,7 @@ const TopRated = () => {
               <SwiperSlide key={index}>
                   <div className="p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
                     <img src={`../../../public/images/${movie.titleImage}`} alt={movie.name} className='w-full h-full object-cover rounded-lg' />
-                    <div className="px-4 hoveres  flex-colos gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0">
+                    <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0">
                       <button className='w-12 h-12 flex-colo transitions hover:bg-subMain rounded-full bg-white bg-opacity-30 text-white'>
                         <FaHeart/>
                       </button>
@@ -43,7 +43,7 @@ const TopRated = () => {
             <button className={classNames} ref={(node)=> setPrevtEl(node)}>
               <BsCaretLeftFill/>
             </button>
-            <button className={classNames} ref={(node)=> setPrevtEl(node)}>
+            <button className={classNames} ref={(node)=> setNextEl(node)}>
               <BsCaretRightFill/>
             </button>
         </div>
