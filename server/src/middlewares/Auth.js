@@ -13,14 +13,14 @@ const protect = asyncHandler(async (req, res, next) => {
     let token;
     // check if token exists in headers
     if (
-        req.headers.authrization &&
-        req.headers.authrization.startWith("Bearer")
+        req.headers.authorization &&
+        req.headers.authorization.startsWith("Bearer")
     ) {
         // set token from Bearer token in header
          try{
-            token = req.headers.authrization.split(" ")[1];
+            token = req.headers.authorization.split(" ")[1];
             // verify token and get user id
-            const decoded = jwt.verify(token, process.env.jWT_SECRET);
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
             // get user id from decoded token
             req.user = await User.findById(decoded.id).select ("-password")
             next();

@@ -12,10 +12,5 @@ router.post("/login", loginUser);
 
 // Private routes
  router.delete("/",protect,deleteUserProfile)
-
-
-
-// ***** PRIVATE ROUTES *****
-router.put("/", protect,updateUserProfile )
-
+ router.put("/",protect,updateUserProfile)
 export default router

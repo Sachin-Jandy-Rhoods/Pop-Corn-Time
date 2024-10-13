@@ -88,6 +88,44 @@ const loginUser = asyncHandler(async(req,res)=>{
 
 })
 
+// ********* PRIVATE CONTROLLERS *********
+
+// @desc Ubdate user profile
+// @route PUT /api/users/profile
+// @acces private
+const updateUserProfile = asyncHandler(async (req,res) => {
+    const { fullName, email,image} = req.body;
+    try {
+        // find user in DB
+        const user = await User.findById(req.user._id);
+        //  if user exists update user data and save it in DB
+
+        if (user) {
+            user.fullName = fullName || user.fullName;
+            user.email = email || user.email;
+            user.image = image || user.image;
+
+            const updateUser = await user.save();
+            // send update user data and token to client
+            res.json({
+                _id: updateUser._id,
+                fullName: updateUser.fullName,
+                email: updateUser.email,
+                image: updateUser.image,
+                isAdmin: updateUser.isAdmin,
+                token: generateToken(updateUser._id),
+            });
+        }
+        // else send error message
+        else{
+            res.status(400);
+            throw new Error("User not found")
+        }
+    } catch (error){
+        res.status(400).json({ message: error.message });
+
+    }
+});
 //desc Delete user profile
 //@route DELETE /api/users/
 //@access Private
@@ -118,4 +156,4 @@ const deleteUserProfile = asyncHandler(async(req,res)=>{
     }
 })
 
-export {registerUser, loginUser, deleteUserProfile};
+export {registerUser, loginUser,updateUserProfile, deleteUserProfile};
