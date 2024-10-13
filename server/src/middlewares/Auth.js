@@ -1,4 +1,6 @@
+import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken"
+import User from "../Models/UserModels.js";
 
 //@desc Authenticated user & get token
 const generateToken=(id)=>{
@@ -6,5 +8,34 @@ const generateToken=(id)=>{
         expiresIn:"1d",
     })
 }
+//  protection middleware
+const protect = asyncHandler(async (req, res, next) => {
+    let token;
+    // check if token exists in headers
+    if (
+        req.headers.authrization &&
+        req.headers.authrization.startWith("Bearer")
+    ) {
+        // set token from Bearer token in header
+         try{
+            token = req.headers.authrization.split(" ")[1];
+            // verify token and get user id
+            const decoded = jwt.verify(token, process.env.jWT_SECRET);
+            // get user id from decoded token
+            req.user = await User.findById(decoded.id).select ("-password")
+            next();
 
-export {generateToken};
+         }catch (error){
+            console.error(error);
+            res.status(401);
+            throw new Error ("Not authorized,token failed");
+         }
+    }
+    //  if token doesn't exist in headers send error
+    if (!token){
+        res.status(401);
+        throw new Error ("Not authorized, no token");
+    }
+})
+
+export {generateToken, protect};
