@@ -1,5 +1,6 @@
 import express from "express"
-import { deleteUserProfile, loginUser, registerUser } from "../Controllers/UserController.js";
+import { deleteUserProfile, loginUser, registerUser, updateUserProfile } from "../Controllers/UserController.js";
+import { protect } from "../middlewares/Auth.js";
 
 
 const router = express.Router();
@@ -11,7 +12,5 @@ router.post("/login", loginUser);
 
 // Private routes
  router.delete("/",protect,deleteUserProfile)
-
-
-
+ router.put("/",protect,updateUserProfile)
 export default router
