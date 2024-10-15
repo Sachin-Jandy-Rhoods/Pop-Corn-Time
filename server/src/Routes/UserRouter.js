@@ -10,7 +10,7 @@ import {
   loginUser,
   registerUser,
   updateUserProfile,
-} from "../Controllers/UserController.js";
+} from "../Controllers/UserController.js";                                     
 import { protect,admin} from "../middlewares/Auth.js";
 
 const router = express.Router();

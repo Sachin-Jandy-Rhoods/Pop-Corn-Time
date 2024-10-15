@@ -1,6 +1,7 @@
 import * as userConstants from "../Constants/userConstants"
 import * as userApi from "../APIs/userServices"
 import toast from "react-hot-toast"
+import { ErrorsAction } from "../Protection";
 
 //login action
 const   loginAction=(datas)=>async(dispatch)=>{
@@ -10,7 +11,25 @@ const   loginAction=(datas)=>async(dispatch)=>{
             dispatch({type: userConstants.USER_LOGIN_SUCCESS, payload:response});
     }
     catch(error){
-            dispatch({type:userConstants.USER_LOGIN_FAIL, payload:error })
-            toast.error(error)
+        ErrorsAction(error, dispatch,userConstants.USER_LOGIN_FAIL )
     }
 }
+
+//register action
+
+const registerAction=(datas)=>async(dispatch)=>{
+        try {
+                dispatch({tupe: userConstants.USER_REGISTER_REQUEST})
+                const response= await userApi.registerService(datas);
+                dispatch({type: userConstants.USER_REGISTER_SUCCESS,payload:response});
+                dispatch({type: userConstants.USER_LOGIN_SUCCESS,payload:response});
+
+                
+        } catch (error) {
+                ErrorsAction(error,dispatch,userConstants.USER_REGISTER_FAIL)
+        }
+}
+
+//logout
+
+export {loginAction,registerAction}
