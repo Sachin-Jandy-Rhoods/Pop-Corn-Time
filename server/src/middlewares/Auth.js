@@ -8,6 +8,7 @@ const generateToken=(id)=>{
         expiresIn:"1d",
     })
 }
+
 //  protection middleware
 const protect = asyncHandler(async (req, res, next) => {
     let token;
@@ -37,6 +38,7 @@ const protect = asyncHandler(async (req, res, next) => {
         throw new Error ("Not authorized, no token");
     }
 })
+
 
 //admin middleware
 

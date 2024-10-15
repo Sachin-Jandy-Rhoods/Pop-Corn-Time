@@ -3,6 +3,7 @@ import  cors from "cors";
 import dotenv from "dotenv";
 import {connectDB} from  "./config/db.js";
 import  userRouter from "./Routes/UserRouter.js";
+import moviesRouter from "./Routes/MoviesRouter.js"
 import { errorHandler } from './middlewares/errorMiddleware.js';
 import Uploadrouter from './Controllers/UploadFile.js';
 
@@ -25,6 +26,8 @@ app.get('/',(req,res)=>{
 //Other routes
 app.use("/api/users",userRouter)
 app.use("/api/upload",Uploadrouter)
+app.use("/api/movies",moviesRouter)
+
 
 //error handling middleware
 app.use(errorHandler)

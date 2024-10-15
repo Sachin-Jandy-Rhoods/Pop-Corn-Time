@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 //@desc login user
-//@route/POST/api/users/login
+//@route POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -201,7 +201,7 @@ const addLikedMovie = asyncHandler(async (req, res) => {
     const { movieId } = req.body;
     try {
       // find usre in db
-      const user = await UserActivation.findById(req.user._id);
+      const user = await User.findById(req.user._id);
       // if user exists add movie to liked movies and save it in db
       if (user) {
         // check if movie already liked
@@ -237,7 +237,7 @@ const deleteLikedMovies = asyncHandler (async (req, res) => {
         if(user){
             user.likedMovies = [];
             await user.save();
-            res.json({message:"All liked Movies Deleted Successfully"});
+            res.json({message:"Your favorite movies deleted Successfully"});
         }
         // else send error message
         else{
@@ -252,7 +252,7 @@ const deleteLikedMovies = asyncHandler (async (req, res) => {
 /// ******* Admin controllers
 
 //@desc Get All users
-//@route GET/api/users
+//@route GET /api/users
 //@access Private/Admin
 
 const getUsers = asyncHandler(async(req,res)=>{
