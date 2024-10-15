@@ -1,6 +1,6 @@
 import * as userConstants from "../Constants/userConstants"
 import * as userApi from "../APIs/userServices"
-import toast from "react-hot-toast"
+// import toast from "react-hot-toast"
 import { ErrorsAction } from "../Protection";
 
 //login action
@@ -31,5 +31,11 @@ const registerAction=(datas)=>async(dispatch)=>{
 }
 
 //logout
+const logoutAction=()=>(dispatch)=>{
+        userApi.logoutService();
+        dispatch({type: userConstants.USER_LOGOUT})
+        dispatch({type: userConstants.USER_LOGIN_RESET})
+        dispatch({type: userConstants.USER_REGISTER_RESET})
+}
 
-export {loginAction,registerAction}
+export {loginAction,registerAction,logoutAction}
