@@ -27,7 +27,7 @@ const UserSchema =mongoose.Schema({
     likedMovies:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:"Movie",
+            ref:"Movies",
         }
     ],
 

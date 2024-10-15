@@ -1,6 +1,8 @@
 import express from "express";
 import {
+  addLikedMovie,
   changeUserPassword,
+  deleteLikedMovies,
   deleteUser,
   deleteUserProfile,
   getLikedMovies,
@@ -23,6 +25,8 @@ router.delete("/", protect, deleteUserProfile);
 router.put("/", protect, updateUserProfile);
 router.put("/password", protect, changeUserPassword);
 router.get("/favorites", protect, getLikedMovies);
+router.post("/favorites", protect, addLikedMovie)
+router.delete("/favorites", protect, deleteLikedMovies)
 
 //Admin Routes
 
