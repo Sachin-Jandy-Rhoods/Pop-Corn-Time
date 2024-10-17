@@ -88,5 +88,6 @@ export const userDeleteProfileReducer = (state = {}, action) => {
             return{}
         default:
             return state
-    }
+    };
+    
 }
