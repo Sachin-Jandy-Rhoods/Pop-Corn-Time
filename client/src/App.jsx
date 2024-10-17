@@ -19,6 +19,8 @@ import Register from "./Screens/Register";
 import Users from "./Screens/Dashboard/Admin/Users";
 import WatchPage from "./Screens/WatchPage";
 import AddMovie from './Screens/Dashboard/Admin/AddMovie';
+import ScrollOnTop from "./ScrollOnTop"
+import ToasContainer from "./Components/Notfications/ToasContainer";
 
 
 const App = () => {
@@ -27,6 +29,9 @@ const App = () => {
   }, []);
 
   return (
+    <>
+    <ToasContainer/>
+    <ScrollOnTop>
     <Routes>
       <Route path="/" element={<HomeScreen />} />
       <Route path="/about-us" element={<AboutUs />} />
@@ -46,6 +51,8 @@ const App = () => {
       <Route path="/users" element={<Users />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </ScrollOnTop>
+    </>
   );
 };
 

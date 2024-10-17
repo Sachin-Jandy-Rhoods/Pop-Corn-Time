@@ -4,4 +4,4 @@ export const InlineError = ({ text }) => {
             <p>{text}</p>
         </div>
     );
-};
+}; 

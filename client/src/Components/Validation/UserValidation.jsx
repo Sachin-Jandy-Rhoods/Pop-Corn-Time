@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 //login validation
 
-const loginValidation = yup.object().shape({
+const LoginValidation = yup.object().shape({
     email : yup.string().email().required("Email is required").trim(),
     password: yup.string()
     .required("Password is required")
@@ -13,7 +13,7 @@ const loginValidation = yup.object().shape({
 
 // register validation
 
-const registerValidation = yup.object().shape({
+const RegisterValidation = yup.object().shape({
     email : yup.string().email().required("Email is required").trim(),
     password: yup.string()
     .required("Password is required")
@@ -26,4 +26,4 @@ const registerValidation = yup.object().shape({
 
 })
 
-export {loginValidation,registerValidation}
+export {LoginValidation,RegisterValidation}
