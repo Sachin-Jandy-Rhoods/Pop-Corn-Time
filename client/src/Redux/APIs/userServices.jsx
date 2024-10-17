@@ -33,6 +33,19 @@ const updateProfileService = async (user, token) => {
   if (data) {
     localStorage.setItem("userInfo", JSON.stringify(data));
   }
+    return data
+       
+    
+};
+
+// change password API call 
+
+const changePasswordService = async (passwords, token ) => {
+    const { data } = await Axios.put("/users/password", passwords, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
   return data;
 };
 
@@ -49,4 +62,4 @@ const deleteProfileService = async (token) => {
   return data;
 };
 
-export { registerService, logoutService, loginServices, updateProfileService, deleteProfileService };
+export { registerService, logoutService, loginServices, updateProfileService,changePasswordService, deleteProfileService };
