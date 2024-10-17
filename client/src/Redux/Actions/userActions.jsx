@@ -1,7 +1,7 @@
-import * as userConstants from "../Constants/userConstants"
+import * as userConstants from "../Constants/userConstants.js"
 import * as userApi from "../APIs/userServices.jsx"
 import toast from "react-hot-toast"
-import { ErrorsAction } from "../Protection";
+import { ErrorsAction, tokenProtection } from "../Protection.js";
 
 //login action
 const   loginAction=(datas)=>async(dispatch)=>{
@@ -43,7 +43,7 @@ const logoutAction=()=>(dispatch)=>{
 const updateProfileAction = (user) => async (dispatch,getState) =>{
         try {
                 dispatch({ type: userConstants.USER_UPDATE_PROFILE_REQUEST});
-                const response = await userApi.updateProfileService(user,tokenProtectio(getState));
+                const response = await userApi.updateProfileService(user,tokenProtection(getState));
                 dispatch({
                         type: userConstants.USER_UPDATE_PROFILE_SUCCESS,
                         payload: response,

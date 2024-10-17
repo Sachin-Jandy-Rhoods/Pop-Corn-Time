@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from './SideBar'
 import Uploder from '../../../Components/Uploder'
 import { Input } from '../../../Components/UsedInputs'
@@ -8,12 +8,19 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ProfileValidation } from '../../../Components/Validation/UserValidation'
 import { InlineError } from '../../../Components/Notfications/Error'
+import { Imagepreview } from '../../../Components/ImagePreview'
+import { updateProfileAction } from '../../../Redux/Actions/userActions'
+import toast from 'react-hot-toast'
 
 const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {userInfo} = useSelector(
     (state) => state.userLogin
+  ); 
+  const[imageUrl,setImageUrl]=useState(userInfo ? userInfo.image:"")
+  const { isLoading, isError,isSuccess } = useSelector(
+    (state) => state.UserUpdateProfile
   );
 
   //validate user
@@ -27,20 +34,44 @@ const Profile = () => {
   });
   //onSubmit
   const onSubmit = async (data) => {
-    console.log(data);
-    
+    dispatch(updateProfileAction({...data, image:imageUrl}))
+    // console.log({...data, image:imageUrl});
   };
 //useEffect
 useEffect(()=>{
+  if(userInfo){
   setValue("fullName",userInfo?.fullName);
   setValue("email",userInfo?.email);
+  }
+  if(isSuccess){
+    dispatch({type:"USER_UPDATE_PROFILE_RESET"})
+  }
+  if(isError){
+    toast.error(isError)
+  }
+
  
-},[userInfo,setValue])
+},[userInfo,setValue,isError,isSuccess])
   return (
     <SideBar>
       <form  onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-6'>
         <h2 className='text-xl font-bold'>Profile</h2>
-        <Uploder/>
+        <div className="w-full grid lg:grid-cols-12 gap-16">
+          <div className="col-span-10">
+          <Uploder setImageUrl={setImageUrl}/>
+          </div>
+          {/* image preview*/}
+          <div className="col-span-2">
+            <Imagepreview 
+            image={imageUrl}
+            name={
+              userInfo? userInfo.fullName:'Popcorn Time'
+            }
+            />
+          </div>
+
+        </div>
+        
         <div className="w-full">
             <Input
              label="FullName"
@@ -55,7 +86,7 @@ useEffect(()=>{
 
         <div className="w-full">
             <Input
-             label="FullName"
+             label="Email"
              placeholder="netflexo react tailwind"
              type="text"
               name="email"
@@ -70,7 +101,9 @@ useEffect(()=>{
             Delete Account
           </button>
           <button className='bg-main transtions font-medium hover:bg-subMain border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto'>
-            Update Profile
+            {
+              isLoading?"Updating....":"Update Profile"
+            }
           </button>
         </div>
       </form>
