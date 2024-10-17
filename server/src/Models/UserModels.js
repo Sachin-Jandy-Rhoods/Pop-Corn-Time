@@ -16,7 +16,7 @@ const UserSchema =mongoose.Schema({
         required:[true,"please add a password"],
         minlength:[6,"password must be atleast 6 characters"],
     },
-    Image:{
+    image:{
         type:String,
     },
     isAdmin:{
