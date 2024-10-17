@@ -64,6 +64,7 @@ const Register = () => {
               type="text"
               name="fullName"
               register={register("fullName")}
+              bg={true}
             />
             {errors.fullName && <InlineError text={errors.fullName.message} />}
           </div>

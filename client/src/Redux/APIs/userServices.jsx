@@ -12,7 +12,7 @@ const registerService=async(user)=>{
 //logout user Function
 const logoutService=()=>{
     localStorage.removeItem("userInfo");
-    return null
+    return null  
 }
 
 //login user

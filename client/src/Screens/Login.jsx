@@ -13,24 +13,24 @@ import { loginAction } from "../Redux/Actions/userActions";
 import toast from "react-hot-toast"
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isLoading, isError, userInfo, isSuccess } = useSelector(
-    (state) => state.userLogin
-  );
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { isLoading, isError, userInfo, isSuccess } = useSelector(
+      (state) => state.userLogin
+    );
 
-  //validate user
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(LoginValidation),
-  });
-  //onSubmit
-  const onSubmit = async (data) => {
-    dispatch(loginAction(data))
-  };
+    //validate user
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm({
+      resolver: yupResolver(LoginValidation),
+    });
+    //onSubmit
+    const onSubmit = async (data) => {
+      dispatch(loginAction(data))
+    };
   //useEffect
   useEffect(()=>{
     if(userInfo?.isAdmin){
@@ -42,7 +42,7 @@ const Login = () => {
     if(isSuccess){
      toast.success(`Welcome back ${userInfo?.fullName}`)
     }
-    if(isError){
+    if(isError){                        
       toast.error(isError)
       dispatch({type:"USER_LOGIN_RESET"})
     }
