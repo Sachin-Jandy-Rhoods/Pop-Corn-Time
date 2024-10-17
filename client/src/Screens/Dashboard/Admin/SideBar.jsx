@@ -1,14 +1,37 @@
 import React from 'react'
 import {BsFillGridFill} from "react-icons/bs"
 import { FaHeart, FaListAlt, FaUsers } from 'react-icons/fa'
-import {RiMovie2Fill,RiLockPasswordLine} from 'react-icons/ri'
+import {RiMovie2Fill,RiLockPasswordLine, RiLogoutCircleLine} from 'react-icons/ri'
 import {HiViewGridAdd} from 'react-icons/hi'
 import {FiSettings} from 'react-icons/fi'
 import Layout from '../../../Layout/Layout'
 import { NavLink } from 'react-router-dom'
+import {useDispatch,useSelector} from  'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { logoutAction } from '../../../Redux/Actions/userActions'
+import toast from "react-hot-toast"
+
+
 
 const SideBar = ({children}) => {
-  const Sidelinks =[
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state)  => state.userLogin);
+
+
+// logout
+
+const logoutHandler = () =>{
+  dispatch(logoutAction());
+  toast.success("logged out successfully");
+  navigate("/login")
+}
+
+
+
+  const Sidelinks =
+  userInfo?.isAdmin?
+  [
     {
       name:"Dashboard",
       link:"/dashboard",
@@ -49,7 +72,30 @@ const SideBar = ({children}) => {
       link:"/password",
       icon:RiLockPasswordLine,
     }
-  ];
+  ]
+  : userInfo ? [
+    {
+      name:"Update Profile",
+      link:"/profile",
+      icon:FiSettings,
+    },
+    {
+      name:"Favourite Movies",
+      link:"/favourites",
+      icon:FaHeart,
+    },
+    {
+      name:"Change Password",
+      link:"/password",
+      icon:RiLockPasswordLine,
+    }
+  ]
+  :[
+
+  ]
+  
+  
+  ;
 
   const active = "bg-dryGray text-subMain"
   const hover = "hover:text-white hover:bg-main"
@@ -72,6 +118,9 @@ const SideBar = ({children}) => {
               </NavLink>
             ))
             }
+            <button onClick={logoutHandler} className={`${inActive} ${hover} w-full` }>
+              <RiLogoutCircleLine/> Log Out
+            </button>
 
           </div>
           <div 
