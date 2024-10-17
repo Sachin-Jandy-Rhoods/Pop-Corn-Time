@@ -83,7 +83,7 @@ const Register = () => {
           <div className="w-full">
             <Input
               label="password"
-              placeholder="popcorntime@gmail.com"
+              placeholder="*******"
               type="password"
               name="password"
               register={register("password")}
@@ -91,12 +91,6 @@ const Register = () => {
             />
             {errors.password && <InlineError text={errors.password.message} />}
           </div>
-          <Input
-            label="password"
-            placeholder="******"
-            type="password"
-            bg={true}
-          />
           <button
           type="submit"
            disabled={isLoading} className="bg-subMain transition hover:bg-main flex-rows gap-4 text-white p-4 rounded-lg w-full">
@@ -106,7 +100,7 @@ const Register = () => {
                 "Loading..."
               ):(
                 <>
-                  <FiLogIn /> Sign In
+                  <FiLogIn /> Sign Up
                 </>
               )
             }
