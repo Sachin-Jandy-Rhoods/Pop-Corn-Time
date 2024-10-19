@@ -1,4 +1,3 @@
-
 import *  as moviesConstants from "../Constants/MoviesConstants";
 
 // GET ALL MOVIES
