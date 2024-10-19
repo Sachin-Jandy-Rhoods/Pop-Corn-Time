@@ -12,6 +12,8 @@ const rootReducers = combineReducers({
   UserchangePassword: User.userChangePasswordReducer,
   userGetFavoriteMovies: User.userGetFavoriteMoviesReducer,
   userDeleteFavoriteMovies: User.userDeleteFavoriteMoviesReducer,
+  adminGetAllUsers : User.adminGetAllUserReducer,
+  adminDeleteUser : User.adminDeleteUserReducer,
    // Category reducers
    categoryGetAll: categories.getAllCategoriesReducer, 
    categoryCreate: categories.createCategoryReducer,
