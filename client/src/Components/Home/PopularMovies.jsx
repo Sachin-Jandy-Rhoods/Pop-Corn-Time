@@ -1,6 +1,6 @@
 import React from 'react'
 import Titles from '../Titles'
-import {BsCollectionFill} from "react-icons/bs"
+import {BsCollectionFill} from "react-icons/bs"   
 import Movie from '../Movie'
 import Loader from '../Notfications/Loader'
 import { Empty } from "../Notfications/Empty"

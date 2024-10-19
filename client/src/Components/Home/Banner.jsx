@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import FlexMovieItems from "../FlexMovieItems";
 import { Link } from 'react-router-dom'
 import { FaHeart } from "react-icons/fa";
+import { RiMovie2Line } from "react-icons/ri";
+import Loader from "../Notfications/Loader";
 
 
 const Swipper = ({sameClass,movies}) => {
@@ -17,10 +19,10 @@ const Swipper = ({sameClass,movies}) => {
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         className={sameClass}
       >
-        {movies.slice(0, 6).map((movie, index) => (
+        {movies?.slice(0, 6).map((movie, index) => (
           <SwiperSlide key={index} className="relative rounded overflow-hidden">
             <img
-              src={movie?.image ? `images/movies/${movie.image}` : "/image/user.png"}
+              src={movie?.image ? `../../../public/images/${movie.image}` : "/image/user.png"}
               alt={movie?.title}
               className="w-full h-full object-cover"
             />

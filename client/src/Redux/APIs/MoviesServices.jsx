@@ -27,14 +27,15 @@ export const getAllMoviesService = async (
 
 //  get random movies function
 
-export const getRandomMoviesService = async () =>{
-    const { data } = await Axios.get(`/movies/random`);
+export const fetchRandomMovies = async () => {
+    const { data } = await Axios.get('/movies/random/all');
     return data;
-}
+};
+
 
 //  get movies by id Function
 
-export const getMovieByService = async (id) =>{
+export const getMovieByIdService = async (id) =>{
     const { data } = await Axios.get(`/movies${id}`);
     return data;
 }

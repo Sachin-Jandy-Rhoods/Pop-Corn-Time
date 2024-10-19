@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import Layout from '../Layout/Layout'
-import { Banner } from '../Components/Home/Banner'
+import  Banner  from '../Components/Home/Banner'
 import PopularMovies from '../Components/Home/PopularMovies'
 import { Promos } from '../Components/Home/Promos'
 import TopRated from '../Components/Home/TopRated'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { getAllMoviesAction, getRandomMoviesAction, getTopRatedMovieAction } from '../Redux/Actions/MoviesActions'
+import toast from 'react-hot-toast'
+ 
 const HomeScreen = () => {
    const dispatch = useDispatch();
   // useSelectors
@@ -31,7 +33,7 @@ const HomeScreen = () => {
     dispatch(getTopRatedMovieAction());
     // errors
     if (isError || randomError|| topError) {
-      Toast.error("something went worng!");
+      toast.error("something went worng!");
     }
    },[dispatch, isError, randomError, topError]) ;
     

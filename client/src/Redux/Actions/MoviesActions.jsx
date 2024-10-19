@@ -33,23 +33,25 @@ export const getAllMoviesAction = ({
 }
 // get random movies action
 export const getRandomMoviesAction = () => async (dispatch) => {
-   try{
-    dispatch({ type: moviesConstants.MOVIES_RANDOM_REQUEST});
-    const response = await moviesAPIs.getRandomMoviesService();
-    dispatch({
-        type: moviesConstants.MOVIES_RANDOM_SUCCESS,
-        payload: response,
-    });
-   } catch (error) {
-    ErrorsAction ( error, dispatch, moviesConstants.MOVIES_RANDOM_FAIL);
-   }
-}
+    try {
+        dispatch({ type: moviesConstants.MOVIES_RANDOM_REQUEST });
+        const response = await moviesAPIs.fetchRandomMovies();
+        dispatch({
+            type: moviesConstants.MOVIES_RANDOM_SUCCESS,
+            payload: response,
+        });
+    } catch (error) {
+        console.error('Error fetching random movies:', error);
+        ErrorsAction(error, dispatch, moviesConstants.MOVIES_RANDOM_FAIL);
+    }
+};
+
 
 //  GET MOVIE BY ID ACTION
 export const getMovieByIdAction = (id) => async (dispatch) => {
     try{
      dispatch({ type: moviesConstants.MOVIES_DETAILS_REQUEST });
-     const response = await moviesAPIs.getRandomMoviesService(id);
+     const response = await moviesAPIs.getMovieByIdService(id);
      dispatch({
          type: moviesConstants.MOVIES_DETAILS_SUCCESS,
          payload: response,
