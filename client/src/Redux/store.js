@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import * as User from "./Reducers/userReducers";
 import * as movies from "./Reducers/MoviesReducer";
-// import { userInfo } from "os";
+import * as categories from "./Reducers/CategoriesReducer"
 
 const rootReducers = combineReducers({
   //user reducers

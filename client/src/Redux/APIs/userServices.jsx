@@ -1,4 +1,5 @@
 import Axios from "./Axios.jsx";
+// ************* PUBLIC  APIs **********
 
 //register new user API call
 const registerService = async (user) => {
@@ -23,7 +24,9 @@ const loginServices = async (user) => {
   }
   return data;
 };
+// ************* PRIVATE  APIs **********
 
+//update profile API call
 const updateProfileService = async (user, token) => {
   const { data } = await Axios.put("/users", user, {
     headers: {

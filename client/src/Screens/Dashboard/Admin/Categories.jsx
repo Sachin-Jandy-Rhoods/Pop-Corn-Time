@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react'
 import SideBar from './SideBar'
 import { HiPlusCircle } from 'react-icons/hi'
 import Table2 from '../../../Components/Table2'
-import {CategoriesData} from '../../../Data/CategoriesData'
 import CategoryModal from '../../../Components/Modals/CategoryModal'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllCategoriesAction } from '../../../Redux/Actions/CategoriesActions'
+import Loader from '../../../Components/Notfications/Loader'
 
 
 
 const Categories = () => {
     const [modalOpen,setModalOpen] = useState(false)
     const  [category, setCategory] = useState("")
+    const dispatch=useDispatch()
+
+    //all categories
+    const {categories, isLoading}=useSelector(state=>state.categoryGetAll)
 
     const OnEditFunction = (id) => {
         setCategory(id);
@@ -17,10 +23,12 @@ const Categories = () => {
     }
 
     useEffect(() => {
+        //get all categories
+        dispatch(getAllCategoriesAction())
         if (modalOpen === false) {
                 setCategory();
         }
-    }, [modalOpen])
+    }, [modalOpen,dispatch])
   return (
     <SideBar>
         <CategoryModal modalOpen={modalOpen} setModalOpen={setModalOpen} category={category}/>
@@ -33,7 +41,18 @@ const Categories = () => {
                    <HiPlusCircle/> Create
                     </button>
             </div>
-            <Table2 data={CategoriesData} users={false} OnEditFunction={OnEditFunction}/>
+            {
+                isLoading?(
+                    <Loader/>
+                ):categories.length>0?(
+                    <Table2 data={categories}
+                    users={false}
+                    OnEditFunction={OnEditFunction}
+                    />
+                ):(
+                    "W8ing for Empty"
+                )
+            }
         </div>
     </SideBar>
   )
