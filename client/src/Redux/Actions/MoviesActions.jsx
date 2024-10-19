@@ -15,7 +15,7 @@ export const getAllMoviesAction = ({
 }) => async ( dispatch ) => {
     try {
         dispatch({type:moviesConstants.MOVIES_LIST_REQUEST})
-        const response =  await moviesAPIs.getAllMovies(
+        const response =  await moviesAPIs.getAllMoviesService(
             category,
             time,
             language,

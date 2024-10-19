@@ -1,45 +1,48 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Transition } from "@headlessui/react";
-import { CategoriesData } from "../Data/CategoriesData";
 import { FaAngleDown, FaCheck } from "react-icons/fa";
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
+import {
+  LanguageData,
+  RatesData,
+  TimesData,
+  YearData,
+} from "../Data/FilterData";
+import { getAllMoviesAction } from "../Redux/Actions/MoviesActions";
 
-const Filters = () => {
-  const YearData = [
-    { title: "Sort By Year" },
-    { title: "1700 - 1800" },
-    { title: "1800 - 1900" },
-    { title: "1900 - 2000" },
-    { title: "2000 - 2010" },
-    { title: "2010 - 2030" },
-  ];
-
-  const TimesData = [
-    { title: "Sort By Hours" },
-    { title: "1 - 5 Hours" },
-    { title: "5 - 10 Hours" },
-    { title: "10 - 15 Hours" },
-    { title: "15 - 20 Hours" },
-  ];
-
-  const RatesData = [
-    { title: "Sort By Rates" },
-    { title: "1 Star" },
-    { title: "2 Star" },
-    { title: "3 Star" },
-    { title: "4 Star" },
-    { title: "5 Star" },
-  ];
-  const [category, setCategory] = useState({ title: "Category" });
-  const [year, setYear] = useState(YearData[0]);
-  const [times, setTimes] = useState(TimesData[0]);
-  const [rates, setRates] = useState(RatesData[0]);
+const Filters = (props) => {
+  const {
+    categories,
+    category,
+    setCategory,
+    language,
+    setLanguage,
+    year,
+    setYear,
+    times,
+    setTimes,
+    rates,
+    setRates
+  } = props?.data;
 
   const Filter = [
     {
       value: category,
       onChange: setCategory,
-      items: CategoriesData,
+      items:
+        categories?.length > 0
+          ? [{ title: "All Categories" }, ...categories]
+          : [{ title: "No Category found" }],
+    },
+    {
+      value: language,
+      onChange: setLanguage,
+      items: LanguageData,
     },
     {
       value: year,
@@ -58,11 +61,14 @@ const Filters = () => {
     },
   ];
   
+
   return (
-    <div className="my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-4 grid-cols-2 lg:gap-12 gap-2 rounded p-6">
+    <div className="my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-5 grid-cols-2 lg:gap-12 gap-2 rounded p-6">
       {Filter.map((item, index) => (
         <Listbox key={index} value={item.value} onChange={item.onChange}>
-          <div className="relative"> {/* Add relative here */}
+          <div className="relative">
+            {" "}
+            {/* Add relative here */}
             <ListboxButton className="relative border border-gray-800 w-full text-white bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-left text-xs ">
               <span className="block-truncate">{item.value.title}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pointer-events-none pr-2">
