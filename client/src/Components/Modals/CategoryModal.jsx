@@ -16,8 +16,6 @@ const CategoryModal = ({ modalOpen, setModalOpen, category }) => {
 
   // category handler
    const submitHandler=(e)=>{
-    console.log("hello");
-    
     e.preventDefault() 
     if(title){
       //if category is not empty then update category else create category
@@ -59,16 +57,14 @@ const CategoryModal = ({ modalOpen, setModalOpen, category }) => {
    if(modalOpen== false){
     setTitle("")
    }
-   },[dispatch,isError,isSuccess,upError,upSuccess,category,modalOpen])
+   },[isError,isSuccess,upError,upSuccess,category,modalOpen])
 
   
   return (
-    <>
-    
     <MainModal modalOpen={modalOpen} setModalOpen={setModalOpen}>
       <div className="inline-block  border border-border text-center lg:w-full w-full allign-middle p-5  h-full bg-main text-white rounded-xl ">
         <h2 className="text-3xl font-bold">{category ? "Update" : "Create"}</h2>
-        <form className="flex flex-col gap-6 text-left mt-6" onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="flex flex-col gap-6 text-left mt-6">
           <Input
             label="Category Name"
             placeholder={"Actions"}
@@ -88,12 +84,6 @@ const CategoryModal = ({ modalOpen, setModalOpen, category }) => {
         </form>
       </div>
     </MainModal>
-    <form onSubmit={submitHandler}>
-      <button type="submit">
-            hi
-      </button>
-    </form>
-    </>
     
   );
 };

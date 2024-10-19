@@ -7,24 +7,24 @@ const MainModal = ({ modalOpen, setModalOpen, children }) => {
 
     return (
         <>
-            <Transition show={modalOpen} as={Fragment} appear>
+            <Transition show={modalOpen} as={Fragment}>
                 <Dialog
                     as="div"
                     className="fixed inset-0 z-30 overflow-y-auto text-center"
                     initialFocus={cancelButtonRef}
-                    onClose={() => {}}
+                    onClose={() => setModalOpen(false)} // Closes modal on background click
                 >
-                    <div className="min-h-screen px-4">
+                    <div className="min-h-screen px-4 flex items-center justify-center">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
                             enterFrom="opacity-0"
                             enterTo="opacity-100"
                             leave="ease-in duration-200"
-                            leaveFrom="opacity-100 scale-100"
+                            leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <Dialog.Panel className="fixed inset-0 bg-black opacity-60" />
+                            <div className="fixed inset-0 bg-black opacity-60" />
                         </Transition.Child>
 
                         <span className="inline-block h-screen align-middle" aria-hidden="true">
@@ -40,20 +40,20 @@ const MainModal = ({ modalOpen, setModalOpen, children }) => {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-6/12 bg-white text-left shadow-xl transform transition-all align-middle rounded-lg">
+                            <div className="inline-block w-6/12 bg-white text-left shadow-xl transform transition-all align-middle rounded-lg relative">
                                 {children}
+
+                                {/* Close button in the corner, outside the dialog */}
+                                <button
+                                    onClick={() => setModalOpen(false)}
+                                    type="button"
+                                    className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center text-base font-extrabold text-main bg-white rounded-full hover:bg-subMain"
+                                    ref={cancelButtonRef}
+                                >
+                                    <IoClose />
+                                </button>
                             </div>
                         </Transition.Child>
-
-                        <div className="absolute right-5 top-5">
-                            <button
-                                onClick={() => setModalOpen(false)}
-                                type="button"
-                                className="transitions w-10 h-10 flex-colo px-4 py-2 text-base font-bold text-subMain bg-white rounded-full hover:bg-subMain hover:text-white"
-                            >
-                                <IoClose />
-                            </button>
-                        </div>
                     </div>
                 </Dialog>
             </Transition>

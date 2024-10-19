@@ -37,7 +37,7 @@ import Axios from "./Axios"
  const updateCategoryService=async(id,title,token)=>{
     const {data}=await Axios.put(`/categories/${id}`,title,{
         headers:{
-            Authorization:`Bearer${token}`,
+            Authorization:`Bearer ${token}`,
         }
     })
     return data;
