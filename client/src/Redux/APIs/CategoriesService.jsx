@@ -24,7 +24,7 @@ import Axios from "./Axios"
 //delete category API function
 
  const deleteCategoryService= async(id,token)=>{
-    const {data}=await Axios.delete(`'/categories'/${id}`,{
+    const {data}=await Axios.delete(`/categories/${id}`,{
         headers:{
             Authorization:`Bearer ${token}`
         }

@@ -4,8 +4,10 @@ import { HiPlusCircle } from 'react-icons/hi'
 import Table2 from '../../../Components/Table2'
 import CategoryModal from '../../../Components/Modals/CategoryModal'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCategoriesAction } from '../../../Redux/Actions/CategoriesActions'
+import { deleteCategoryAction, getAllCategoriesAction } from '../../../Redux/Actions/CategoriesActions'
 import Loader from '../../../Components/Notfications/Loader'
+import toast from 'react-hot-toast'
+import { Empty } from '../../../Components/Notfications/Empty'
 
 
 
@@ -16,6 +18,13 @@ const Categories = () => {
 
     //all categories
     const {categories, isLoading}=useSelector(state=>state.categoryGetAll)
+    //delete category
+    const {isSucces, isError}=useSelector(state=>state.categoryDelete)
+    const adminDeletecategory=(id)=>{
+        if(window.confirm("Are you sure you want delete this category")){
+            dispatch(deleteCategoryAction(id))
+        }
+    }
 
     const OnEditFunction = (id) => {
         setCategory(id);
@@ -25,10 +34,18 @@ const Categories = () => {
     useEffect(() => {
         //get all categories
         dispatch(getAllCategoriesAction())
+        if(isError){
+            toast.error(isError)
+            dispatch({type:"DELETE_CATEGORY_RESET"})
+        }
+        if(isSucces){
+            dispatch({type:"DELETE_CATEGORY_RESET"})
+        }
+
         if (modalOpen === false) {
                 setCategory();
         }
-    }, [modalOpen,dispatch])
+    }, [modalOpen,dispatch,isError,isSucces])
   return (
     <SideBar>
         <CategoryModal modalOpen={modalOpen} setModalOpen={setModalOpen} category={category}/>
@@ -44,13 +61,14 @@ const Categories = () => {
             {
                 isLoading?(
                     <Loader/>
-                ):categories.length>0?(
+                ):categories?.length>0?(
                     <Table2 data={categories}
                     users={false}
                     OnEditFunction={OnEditFunction}
+                    onDeleteFunction={adminDeletecategory}
                     />
                 ):(
-                    "W8ing for Empty"
+                    <Empty/>
                 )
             }
         </div>

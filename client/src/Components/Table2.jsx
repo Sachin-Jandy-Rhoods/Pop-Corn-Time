@@ -43,14 +43,14 @@ const Rows = ({data, i, users, OnEditFunction,onDeleteFunction}) =>{
                 :(
                     // Categories
                    <>
-            <td className={`${Text} font-bold`}>2R75T8</td>
-            <td className={`${Text}`}>{data.createAt ?data.createAt :"12, jan 2023"}</td>
+            <td className={`${Text} font-bold`}>{data?._id ? shortUppercaseId (data._id):"2R75T8"}</td>
+            <td className={`${Text}`}>{DateFormat(data?.createdAt)}</td>
             <td className={`${Text}`}>{data.title}</td>
             <td className={`${Text} float-right flex-rows gap-2`}>
                          <button onClick={() => OnEditFunction(data)} className='border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2'>
                     Edit <FiEdit className='text-green-500'/>
                 </button>
-                <button className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
+                <button onClick={() =>onDeleteFunction(data?._id)}  className='bg-subMain text-white rounded flex-colo w-6 h-6 '>
                      <MdDelete/>
                 </button>
                        
@@ -101,7 +101,7 @@ const Table2 = ({data,users, OnEditFunction,onDeleteFunction}) => {
                 Date
                 </th>
                 <th scope='col' className={`${Head}`}>
-                    Title
+                    Name
                 </th>
                 
                         </>

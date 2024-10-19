@@ -22,17 +22,15 @@ export const getAllCategoriesAction = () => async (dispatch) => {
 
 export const createCategoryAction = (title) => async (dispatch, getState) => {
   try {
-    dispatch({ type: CategoriesConstants.CREATE_CATEGORY_REQUEST });
-    await CategoriesAPIs.createCategoryService(
-      title,
-      tokenProtection(getState)
-    );
-    dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
-    toast.success("Category created Succesfully");
+      dispatch({ type: CategoriesConstants.CREATE_CATEGORY_REQUEST });
+      await CategoriesAPIs.createCategoryService(title, tokenProtection(getState));
+      dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
+      toast.success("Category created successfully");
   } catch (error) {
-    ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
+      ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
   }
 };
+
 
 //UPDATE CATEGORY ACTION
 export const updateCategoryAction =
