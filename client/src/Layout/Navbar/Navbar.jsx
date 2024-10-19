@@ -9,8 +9,7 @@ import user from '../../Assets/user.jpg'
 
 const Navbar = () => {
     const {userInfo} = useSelector((state)=>state.userLogin)
-    //w8 for roshini
-    // const {likedMovies}= useSelector((state)=>state.userGetFavoriteMovies);
+    const {likedMovies}= useSelector((state)=>state.userGetFavoriteMovies);
     const hover='hover:text-subMain transitions text-white';
     const Hover=({isActive})=>(isActive?'text-subMain':hover)
 
@@ -60,10 +59,9 @@ const Navbar = () => {
                 <NavLink to={"/favourites"} className={`${Hover} relative`}>
                     <FaHeart className="w-6 h-6" />
                     <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
-                        {/* {
+                        {
                             likedMovies?.length 
-                        } */}
-                        3
+                        }
                     </div>
                 </NavLink>
             </div>
