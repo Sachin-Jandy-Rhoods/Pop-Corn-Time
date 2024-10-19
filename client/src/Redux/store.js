@@ -1,26 +1,32 @@
-import {combineReducers,configureStore} from "@reduxjs/toolkit";
-import * as User from "./Reducers/userReducers"
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import * as User from "./Reducers/userReducers";
+import * as movies from "./Reducers/MoviesReducer";
 // import { userInfo } from "os";
 
-const rootReducers=combineReducers({
-    //user reducer
-    userLogin:User.userLoginReducer,
-    userRegister:User.userRegisterReducer,
-    UserUpdateProfile: User.userUpdateProfileReducer,
-    userDeleteProfile: User.userDeleteProfileReducer,    UserchangePassword: User.userChangePasswordReducer
+const rootReducers = combineReducers({
+  //user reducers
+  userLogin: User.userLoginReducer,
+  userRegister: User.userRegisterReducer,
+  UserUpdateProfile: User.userUpdateProfileReducer,
+  userDeleteProfile: User.userDeleteProfileReducer,
+  UserchangePassword: User.userChangePasswordReducer,
+  userGetFavoriteMovies: User.userGetFavoriteMoviesReducer,
+  userDeleteFavoriteMovies: User.userDeleteFavoriteMoviesReducer,
 
-})
+  //Movies reducers
+  // getAllMovies: movies.moviesListReducer,
+});
 // get userInfo from  local storage
-const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
-
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
 
 // initialState
-const initialState={
-    userLogin:{userInfo:userInfoFromStorage},
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
 };
 
-export const store=configureStore({
-    reducer:rootReducers,
-    preloadedState:initialState,
-})
-
+export const store = configureStore({
+  reducer: rootReducers,
+  preloadedState: initialState,
+});

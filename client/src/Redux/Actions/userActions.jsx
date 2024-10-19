@@ -59,7 +59,6 @@ const updateProfileAction = (user) => async (dispatch, getState) => {
   }
 };
 
-
 // delete profile Action
 const deleteProfileAction = () => async (dispatch, getState) => {
   try {
@@ -74,28 +73,61 @@ const deleteProfileAction = () => async (dispatch, getState) => {
 };
 //  change Password action
 
-const changePasswordAction=(passwords)=>async(dispatch,getState)=>{
-        try {
-                dispatch({type:userConstants.USER_CHANGE_PASSWORD_REQUEST});
-                const response=await userApi.changePasswordService(
-                        passwords,
-                        tokenProtection(getState)
-                );
-                dispatch({
-                        type:userConstants.USER_CHANGE_PASSWORD_SUCCESS,
-                        payload:response,
-                })
+const changePasswordAction = (passwords) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: userConstants.USER_CHANGE_PASSWORD_REQUEST });
+    const response = await userApi.changePasswordService(
+      passwords,
+      tokenProtection(getState)
+    );
+    dispatch({
+      type: userConstants.USER_CHANGE_PASSWORD_SUCCESS,
+      payload: response,
+    });
+  } catch (error) {
+    ErrorsAction(error, dispatch, userConstants.USER_CHANGE_PASSWORD_FAIL);
+  }
+};
 
-        } catch (error) {
-                ErrorsAction(error,dispatch,userConstants.USER_CHANGE_PASSWORD_FAIL)
-        }
+// get all favorite movies action
 
+const getFavoriteMoviesAction = ()=> async(dispatch, getState)=>{
+  try {
+     dispatch({type: userConstants.GET_FAVORITE_MOVIES_REQUEST});
+     const response = await userApi.getFavoriteMovies(tokenProtection(getState));
+     dispatch({
+      type: userConstants.GET_FAVORITE_MOVIES_SUCCESS,
+      payload: response,
+     }); 
+  } catch (error) {
+      ErrorsAction( error, dispatch, userConstants.GET_FAVORITE_MOVIES_FAIL);
+  }
+};
+
+// delete all favorite movies action
+
+const deleteFavoriteMoviesAction = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: userConstants.DELETE_FAVORITE_MOVIES_REQUEST})
+    await userApi.deleteFavoriteMovies(
+      tokenProtection(getState)
+    )
+    dispatch({
+      type: userConstants.DELETE_FAVORITE_MOVIES_SUCCESS,
+    })
+    toast.success("Favorite Movies Deleted")
+  } catch (error) {
+      ErrorsAction(error, dispatch, userConstants.DELETE_FAVORITE_MOVIES_FAIL)    
+  }
 }
 
 export {
   loginAction,
   registerAction,
   logoutAction,
-  updateProfileAction,changePasswordAction,
+  updateProfileAction,
   deleteProfileAction,
+  changePasswordAction,
+  getFavoriteMoviesAction,
+  deleteFavoriteMoviesAction
 };
