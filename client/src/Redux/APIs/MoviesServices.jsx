@@ -36,7 +36,7 @@ export const fetchRandomMovies = async () => {
 //  get movies by id Function
 
 export const getMovieByIdService = async (id) =>{
-    const { data } = await Axios.get(`/movies${id}`);
+    const { data } = await Axios.get(`/movies/${id}`);
     return data;
 }
 

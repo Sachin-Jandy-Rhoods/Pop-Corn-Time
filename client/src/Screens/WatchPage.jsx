@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import { Movies } from "../Data/MoviesData";
 import { BiArrowBack } from "react-icons/bi";
 import { FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieByIdAction } from "../Redux/Actions/MoviesActions";
 
 const WatchPage = () => {
   let { id } = useParams();
-  const movie = Movies.find((movie) => movie.name === id);
+  const dispatch=useDispatch();
   const [play, setPlay] = useState(false);
+  const samClass="w-full gap-6 flex-colo min-h-screen"
+  //use Selector
+  const{isLoading, isError, movie}=useSelector(
+    (state)=>state.getMovieById
+  )
+//useEffect 
+useEffect(()=>{
+  //movie id
+  dispatch(getMovieByIdAction(id))
+},[dispatch,id])
+
   return (
     <Layout>
       <div className="container mx-auto bg-dry p-6 mb-12">
         <div className="flex-btn flex-wrap mb-6 gap-2 bg-main rounded border border-gray-800 p-6">
           <Link
-            to={`/movie/${movie?.name}`}
+            to={`/movie/${movie?._id}`}
             className="md:text-xl text-sm flex gap-3 items-center font-bold text-dryGray"
           >
             <BiArrowBack /> {movie?.name}
