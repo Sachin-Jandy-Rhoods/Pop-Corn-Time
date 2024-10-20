@@ -83,27 +83,37 @@ const deleteFavoriteMovies = async (token) => {
   return data;
 };
 
-
-const getAllUsersService = async (token) =>{
-  const {data} = await Axios.get("/users" ,{
-    headers:{
-      Authorization: `Bearer ${token}`
-    }
+// like movie api call
+const likeMovieService = async (movieId, token) => {
+  const { data } = await Axios.post(`/users/favotites`, movieId, {
+    headers: {
+      Authorizarion: `Bearer ${token}`,
+    },
   });
   return data;
 };
 
-//Admin delete user 
+// admin get all users
 
-const deleteUserService = async (id,token) =>{
-  const {data} = await Axios.delete(`/users/${id}` ,{
-    headers:{
-      Authorization: `Bearer ${token}`
-    }
+const getAllUsersService = async (token) => {
+  const { data } = await Axios.get("/users", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   return data;
 };
 
+//Admin delete user
+
+const deleteUserService = async (id, token) => {
+  const { data } = await Axios.delete(`/users/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
 
 export {
   registerService,
@@ -115,5 +125,6 @@ export {
   getFavoriteMovies,
   deleteFavoriteMovies,
   getAllUsersService,
-  deleteUserService
+  deleteUserService,
+  likeMovieService
 };

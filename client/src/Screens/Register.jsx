@@ -41,7 +41,7 @@ const Register = () => {
       navigate("/profile")
     }
     if(isSuccess){
-     toast.success(`Welcome${userInfo?.fullName}`)
+     toast.success(`Welcome ${userInfo?.fullName}`)
      dispatch({type:"USER_REGISTER_RESET"})
     }
     if(isError){
