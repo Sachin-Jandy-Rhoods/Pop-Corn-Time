@@ -24,12 +24,14 @@ import ToasContainer from "./Components/Notfications/ToasContainer";
 import { AdminProtectedRouter, ProtectedRouter } from "./ProtectedRouter";
 import { useDispatch } from "react-redux";
 import { getAllCategoriesAction } from "./Redux/Actions/CategoriesActions";
+import { getAllMoviesAction } from "./Redux/Actions/MoviesActions";
 
 const App = () => {
     AOS.init();
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getAllCategoriesAction());
+      dispatch(getAllMoviesAction({}))
     }, [dispatch]);
 
   return (

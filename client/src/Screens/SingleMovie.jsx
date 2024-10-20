@@ -59,20 +59,23 @@ const SingleMovie = () => {
             <ShareMovieModal modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie} />
             <MovieInfo movie={movie} setModalOpen={setModalOpen} />
             <div className='container mx-auto min-h-screen px-2 my-6'>
-              <MovieCasts />
+              <MovieCasts movie={movie} />
               {/* Rate */}
               <MovieRates movie={movie} />
               {/* Related */}
-              <div className='my-16'>
+              {
+                RelatedMovies?.length>0 && <div className='my-16'>
                 <Titles title="Related Movies" Icon={BsCollectionFill} />
                 <div className='grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6'>
                   {
-                    RelatedMovies.map((relatedMovie, index) => (
-                      <Movie key={index} movie={relatedMovie} />
+                    RelatedMovies?.map((relatedMovie) => (
+                      <Movie key={movie?._id} movie={relatedMovie} />
                     ))
                   }
                 </div>
               </div>
+              }
+
             </div>
           </>
         )
