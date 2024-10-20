@@ -8,6 +8,7 @@ import { getAllUsersAction } from '../../../Redux/Actions/userActions'
 import toast from 'react-hot-toast'
 import { Empty } from '../../../Components/Notfications/Empty'
 import Loader from '../../../Components/Notfications/Loader'
+import { deleteMovieAction } from '../../../Redux/Actions/MoviesActions'
  
  const Dashboard = () => {
     const dispatch = useDispatch();
@@ -24,16 +25,27 @@ import Loader from '../../../Components/Notfications/Loader'
     const { isLoading, isError, movies,totalMovies} = useSelector(
       (state) => state.getAllMovies
     );
+    //delete
+    const { isLoading: deleteLoading, isError: deleteError } = useSelector(
+      (state) => state.deleteMovie
+    );
+
+     //delete movie handler
+  const deleteMovieHandler = (id) => {
+    window.confirm("Are you sure you want to delete this movie") &&
+      dispatch(deleteMovieAction(id));
+  };
+
   
     // useEffect
     useEffect(() => {
       //  get all users 
       dispatch(getAllUsersAction());
       // errors
-      if (isError || catError || userError) {
+      if (isError || catError || userError || deleteError) {
         toast.error("something went wrong!");
       }
-     },[dispatch, isError, catError, userError]) ;
+     },[dispatch, isError, catError, userError,deleteError]) ;
 
      // dashboard  data
 
@@ -75,10 +87,10 @@ import Loader from '../../../Components/Notfications/Loader'
             ))}
         </div>
         <h3 className='text-md font-medium my-6 text-border'>Recent Movies</h3>
-        {isLoading ? (
+        {isLoading || deleteLoading ? (
           <Loader />
         ) : movies?.length > 0 ? (
-          <Table data={movies?.slice(0,5)} admin={true} />
+          <Table data={movies?.slice(0,5)} admin={true}  onDeleteHandler={deleteMovieHandler}/>
         ) : (
           <Empty message="Empty" />
         )}

@@ -112,7 +112,7 @@ export const reviewMovieAction = ({id, review}) => async (dispatch, getState) =>
             payload:response,
         })
         toast.success("Movie deleted  successfully")
-        dispatch(getAllMoviesAction())
+        dispatch(getAllMoviesAction({}));
     } catch (error) {
         ErrorsAction(error,dispatch,moviesConstants.DELETE_MOVIE_FAIL)
     }
@@ -122,17 +122,17 @@ export const reviewMovieAction = ({id, review}) => async (dispatch, getState) =>
  export const deleteAllMovieAction=()=> async(dispatch,getState)=>{
     try {
         dispatch({type: moviesConstants.DELETE_ALL_MOVIES_REQUEST})
-        const response= await moviesAPIs.deleteMovieService(
-            tokenProtection(getState),
-            id
+        const response= await moviesAPIs.deleteAllMoviesService(
+            tokenProtection(getState)
         )
         dispatch({
             type: moviesConstants.DELETE_ALL_MOVIES_SUCCESS,
             payload:response,
         })
         toast.success("All Movies deleted  successfully")
-        dispatch(getAllMoviesAction())
+        dispatch(getAllMoviesAction({}))
     } catch (error) {
+      console.error("Delete Movie Error: ", error);
         ErrorsAction(error,dispatch,moviesConstants.DELETE_ALL_MOVIES_FAIL)
     }
  }

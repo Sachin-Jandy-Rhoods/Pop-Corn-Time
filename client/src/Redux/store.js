@@ -26,10 +26,9 @@ const rootReducers = combineReducers({
    getRandomMovies: movies.moviesRandomReducer,
    getMovieById: movies.movieDetailsReducer,
    getTopRatedMovie: movies.movieTopRatedReducer,
-   createReview: movies.createReviewReducer   deleteMovie:movies.deleteMovieReducer,
+   createReview: movies.createReviewReducer ,
+   deleteMovie:movies.deleteMovieReducer,
    deleteAllMovies:movies.deleteAllMoviesReducer
-
-
 });
 
 

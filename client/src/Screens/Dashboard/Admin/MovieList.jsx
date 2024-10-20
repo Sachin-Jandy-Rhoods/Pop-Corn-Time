@@ -44,12 +44,12 @@ const MovieList = () => {
 
   //useEffect
   useEffect(() => {
-    
+    dispatch(getAllMoviesAction({}));
+
     // errors
     if (isError || deleteError || allError) {
       toast.error(isError || deleteError || allError);
     }
-    dispatch(getAllMoviesAction({}));
   }, [dispatch, isError, deleteError, allError]);
 
   // pagination next and prev page
