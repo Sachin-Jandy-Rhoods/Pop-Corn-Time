@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFavoriteMoviesAction, getFavoriteMoviesAction } from "../../../Redux/Actions/userActions";
 import Loader from "../../../Components/Notfications/Loader";
 import { Empty } from "../../../Components/Notfications/Empty";
+import toast from "react-hot-toast";
 
 const FavouritesMovies = () => {
   const dispatch = useDispatch();

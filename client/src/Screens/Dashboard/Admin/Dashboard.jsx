@@ -1,29 +1,60 @@
- import React from 'react'
+ import React, { useEffect } from 'react'
 import SideBar from './SideBar'
 import { FaRegListAlt, FaUser } from 'react-icons/fa'
 import { HiViewGridAdd } from 'react-icons/hi'
 import Table from '../../../Components/Table'
-import { Movies } from '../../../Data/MoviesData'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllUsersAction } from '../../../Redux/Actions/userActions'
+import toast from 'react-hot-toast'
+import { Empty } from '../../../Components/Notfications/Empty'
+import Loader from '../../../Components/Notfications/Loader'
  
  const Dashboard = () => {
+    const dispatch = useDispatch();
+    // useSelectors
+    const { isLoading:catLoading, isError:catError, categories} = useSelector(
+      (state) => state.categoryGetAll
+    );
+    const {
+      isLoading: userLoading,
+      isError: userError,
+      users,
+      
+    } = useSelector(( state) => state.adminGetAllUsers);
+    const { isLoading, isError, movies,totalMovies} = useSelector(
+      (state) => state.getAllMovies
+    );
+  
+    // useEffect
+    useEffect(() => {
+      //  get all users 
+      dispatch(getAllUsersAction());
+      // errors
+      if (isError || catError || userError) {
+        toast.error("something went wrong!");
+      }
+     },[dispatch, isError, catError, userError]) ;
+
+     // dashboard  data
+
     const DashboardData = [
         {
             bg:"bg-orange-600",
             icon:FaRegListAlt,
-            tittle:"Total Movies",
-            total:90
+            title:"Total Movies",
+            total: isLoading ? "Loading..." : totalMovies || 0,
         },
         {
             bg:"bg-blue-700",
             icon:HiViewGridAdd,
-            tittle:"Total Categories",
-            total:8
+            title:"Total Categories",
+            total:catLoading ? "Loading..." : categories?.length || 0,
         },
         {
             bg:"bg-green-600",
             icon:FaUser,
-            tittle:"Total Users",
-            total:134
+            title:"Total Users",
+            total:userLoading ? "Loading..." : users?.length || 0,
         },
 
     ]
@@ -44,7 +75,14 @@ import { Movies } from '../../../Data/MoviesData'
             ))}
         </div>
         <h3 className='text-md font-medium my-6 text-border'>Recent Movies</h3>
-        <Table data={Movies.slice(0,5)} admin={true}/>
+        {isLoading ? (
+          <Loader />
+        ) : movies?.length > 0 ? (
+          <Table data={movies?.slice(0,5)} admin={true} />
+        ) : (
+          <Empty message="Empty" />
+        )}
+       
     </SideBar>
    )
  }
