@@ -37,7 +37,7 @@ const Navbar = () => {
           {/* Search Form */}
           <div className="col-span-3">
             <form
-              onClick={handleSearch}
+              onSubmit={handleSearch}
               className="w-full text-sm bg-dryGray rounded flex-btn gap-4"
             >
               <button
