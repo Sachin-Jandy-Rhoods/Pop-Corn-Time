@@ -28,6 +28,7 @@ import { getAllMoviesAction } from "./Redux/Actions/MoviesActions";
 import { getFavoriteMoviesAction } from "./Redux/Actions/userActions";
 import toast from "react-hot-toast";
 import EditMovie from "./Screens/Dashboard/Admin/EditMovie";
+import SidebarProvider from "./Context/SidebarContext";
 
 const App = () => {
     AOS.init();
@@ -53,6 +54,7 @@ const App = () => {
 
     return (
         <>
+            <SidebarProvider>
             <ToasContainer />
             <ScrollOnTop>
                 <Routes>
@@ -87,6 +89,7 @@ const App = () => {
                     </Route>
                 </Routes>
             </ScrollOnTop>
+            </SidebarProvider>
         </>
     );
 };

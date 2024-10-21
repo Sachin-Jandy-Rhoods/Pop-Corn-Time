@@ -26,6 +26,7 @@ export const createCategoryAction = (title) => async (dispatch, getState) => {
         await CategoriesAPIs.createCategoryService(title, tokenProtection(getState));
         dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
         toast.success("Category created successfully");
+        dispatch(getAllCategoriesAction())
     } catch (error) {
         ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
     }

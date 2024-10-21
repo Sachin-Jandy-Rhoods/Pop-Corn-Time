@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../Layout/Layout'
@@ -12,9 +12,13 @@ import ShareMovieModal from '../Components/Modals/ShareModal'
 import { getMovieByIdAction } from '../Redux/Actions/MoviesActions'
 import { RiMovie2Line } from 'react-icons/ri'
 import Loader from "../Components/Notfications/Loader"
+import { DownloadVideo } from '../Context/Functionalities'
+import  FileSaver  from 'file-saver'
+import { SidebarContext } from '../Context/SidebarContext'
 
 const SingleMovie = () => {
   const [modalOpen, setModalOpen] = useState(false)
+  const {progress,setprogress}=useContext(SidebarContext)
   const { id } = useParams()
   const dispatch = useDispatch()
   const sameClass = "w-full gap-6 flex-colo min-h-screen"
@@ -31,6 +35,14 @@ const SingleMovie = () => {
 
   // Related movies 
   const RelatedMovies = movies?.filter((m) => m.category === movie?.category)
+
+  // download movie video
+   const DownloadMovieVideo=async (videoUrl,name)=>{
+    await DownloadVideo(videoUrl,setprogress).then((data)=>{
+      setprogress(0);
+      FileSaver.saveAs(data,name);
+    })
+   }
 
   // useEffect
   useEffect(() => {
@@ -57,7 +69,7 @@ const SingleMovie = () => {
         ) : (
           <>
             <ShareMovieModal modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie} />
-            <MovieInfo movie={movie} setModalOpen={setModalOpen} />
+            <MovieInfo movie={movie} setModalOpen={setModalOpen} DownloadMovieVideo={DownloadMovieVideo} progress={progress} />
             <div className='container mx-auto min-h-screen px-2 my-6'>
               <MovieCasts movie={movie} />
               {/* Rate */}

@@ -12,7 +12,7 @@ const Footer = () => {
                     link:"/"
                 },
                 {
-                    name:"Avout-Us",
+                    name:"About-Us",
                     link:"/about-us"
                 },
                 {
@@ -55,7 +55,7 @@ const Footer = () => {
                         },
                         {
                             name:"My Favourites",
-                            link:"/favorite"
+                            link:"/favourites"
                         },
                         {
                             name:"Profile",

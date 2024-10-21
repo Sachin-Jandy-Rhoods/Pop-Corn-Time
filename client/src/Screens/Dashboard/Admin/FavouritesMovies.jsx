@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import SideBar from "./SideBar";
 import Table from "../../../Components/Table";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,9 @@ import { deleteFavoriteMoviesAction, getFavoriteMoviesAction } from "../../../Re
 import Loader from "../../../Components/Notfications/Loader";
 import { Empty } from "../../../Components/Notfications/Empty";
 import toast from "react-hot-toast";
+import { SidebarContext } from "../../../Context/SidebarContext";
+import { DownloadVideo } from "../../../Context/Functionalities";
+import FileSaver from "file-saver";
 
 const FavouritesMovies = () => {
   const dispatch = useDispatch();
@@ -13,6 +16,8 @@ const FavouritesMovies = () => {
   const { isLoading, isError, likedMovies } = useSelector(
     (state) => state.userGetFavoriteMovies
   );
+  const {progress,setprogress}=useContext(SidebarContext)
+
 
   //delete
   const {
@@ -20,6 +25,14 @@ const FavouritesMovies = () => {
     isError: deleteError,
     isSuccess,
   } = useSelector((state) => state.userDeleteFavoriteMovies);
+
+  // download movie video
+  const DownloadMovieVideo=async (videoUrl,name)=>{
+    await DownloadVideo(videoUrl,setprogress).then((data)=>{
+      setprogress(0);
+      FileSaver.saveAs(data,name);
+    })
+   }
 
   //delete movies handler
   const deleteMoviesHandler = (id) => {
@@ -51,7 +64,7 @@ const FavouritesMovies = () => {
         {isLoading ? (
           <Loader />
         ) : likedMovies?.length > 0 ? (
-          <Table data={likedMovies} admin={false} />
+          <Table data={likedMovies} admin={false} downloadVideo={DownloadMovieVideo} progress={progress}/>
         ) : (
           <Empty message="You have no Favorite Movies" />
         )}
