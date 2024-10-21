@@ -1,6 +1,6 @@
 import React from 'react'
 import {FiUser} from "react-icons/fi"
-import mobile from "../../../public/mobile.png"
+import mobile from "../../Assets/mobile.png"
 
 export const Promos = () => {
   return (

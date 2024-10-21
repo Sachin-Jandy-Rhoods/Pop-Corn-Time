@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "../Layout/Layout";
-import logo from "../../public/logo.png";
+import logo from "../Assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { Input } from "../Components/UsedInputs";

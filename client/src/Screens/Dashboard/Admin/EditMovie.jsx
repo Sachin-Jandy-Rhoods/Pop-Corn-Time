@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { Imagepreview } from "../../../Components/ImagePreview";
 import Loader from "../../../Components/Notfications/Loader";
 import { RiMovie2Line } from "react-icons/ri";
+import user from "../../../Assets/user.jpg"
 
 const EditMovie = () => {
   const sameClass = "w-full gap-6 flex-colo min-h-screen";
@@ -266,7 +267,7 @@ const EditMovie = () => {
                       src={`${
                         user?.image
                           ? user.image
-                          : "../../../../public/favicon.png"
+                          : user
                       }`}
                       alt={user.name}
                       className="w-full h-24 object-cover rounded mb-4"

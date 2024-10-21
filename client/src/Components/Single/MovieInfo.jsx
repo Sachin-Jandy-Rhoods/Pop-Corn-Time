@@ -3,14 +3,14 @@ import FlexMovieItems from "../FlexMovieItems";
 import { FaPlay, FaShareAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
-import userimage from "../../../public/favicon.png";
 import Rating from "../Stars";
+import userImage from "../../Assets/favicon.png"
 
 const MovieInfo = ({ movie, setModalOpen }) => {
   return (
     <div className="w-full xl:h-screen relative text-white">
       <img
-        src={movie?.image ? movie?.image : "../../../public/favicon.png"}
+        src={movie?.image ? movie?.image : userImage}
         alt={movie?.name}
         className="w-full hidden xl:inline-block h-full object-cover"
       />
@@ -21,7 +21,7 @@ const MovieInfo = ({ movie, setModalOpen }) => {
               src={
                 movie?.titleImage
                   ? movie?.titleImage
-                  : "../../../public/favicon.png"
+                  : userImage
               }
               alt={movie?.name}
               className="w-full h-full object-cover"

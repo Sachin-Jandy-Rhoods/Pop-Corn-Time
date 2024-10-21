@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../../../public/logo.png'
+import logo from '../../Assets/logo.png'
 
 const Footer = () => {
     const Links=[
@@ -93,7 +93,7 @@ const Footer = () => {
 
                 <div className="pb-3 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
                     <Link to={"/"}>
-                            <img src={Logo} alt="logo" className='w-3/4 object-cover h-14'/>
+                            <img src={logo} alt="logo" className='w-3/4 object-cover h-14'/>
                     </Link>
                     <p className='leading-7 text-sm text-border md:mt-3'>
                         <span>

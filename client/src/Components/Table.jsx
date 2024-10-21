@@ -6,6 +6,8 @@ import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
 const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
 const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
+import userImage from "../Assets/favicon.png"
+
 
 const Rows = (movie, i, onDeleteHandler, admin) => {
   return (
@@ -14,7 +16,7 @@ const Rows = (movie, i, onDeleteHandler, admin) => {
         <div className="w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden">
           <img
             className="h-full w-full object-cover"
-            src={movie?.image ? movie?.image : "/images/user.png"}
+            src={movie?.image ? movie?.image : userImage}
             alt={movie?.title}
           />
         </div>

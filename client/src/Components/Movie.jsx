@@ -3,6 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { IfMovieLiked, LikedMovie } from '../Context/Functionalities'
+import userImage from "../Assets/favicon.png"
 
 const Movie = ({ movie }) => {
   const {isLoading} = useSelector((state)=>state.userLikeMovie)
@@ -16,7 +17,7 @@ const isLiked =  IfMovieLiked(movie)
     <div className="border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden">
       <Link to={`/movie/${movie?._id}`} className="w-full">
         <img
-          src={movie?.image ? movie?.image : "/image/user.png"}
+          src={movie?.image ? movie?.image : userImage}
           alt={movie?.name}
           className="w-full h-64 object-cover"
         />

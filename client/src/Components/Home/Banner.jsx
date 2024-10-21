@@ -8,6 +8,7 @@ import { RiMovie2Line } from "react-icons/ri";
 import Loader from "../Notfications/Loader";
 import {useDispatch, useSelector} from "react-redux"
 import { IfMovieLiked, LikedMovie } from "../../Context/Functionalities";
+import userImage from  "../../Assets/favicon.png"
 
 
 const Swipper = ({ sameClass, movies, likedMovies }) => {
@@ -33,7 +34,7 @@ const Swipper = ({ sameClass, movies, likedMovies }) => {
       {movies?.slice(0, 6).map((movie, index) => (
         <SwiperSlide key={index} className="relative rounded overflow-hidden">
           <img
-            src={movie?.image ? `${movie.image}` : "/image/user.png"}
+            src={movie?.image ? `${movie.image}` : userImage}
             alt={movie?.title}
             className="w-full h-full object-cover"
           />

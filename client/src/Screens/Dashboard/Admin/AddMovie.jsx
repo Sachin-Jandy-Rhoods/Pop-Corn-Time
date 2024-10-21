@@ -12,10 +12,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { movieValidation } from "../../../Components/Validation/MovieValidation";
 import { createMovieAction, removeCastAction } from "../../../Redux/Actions/MoviesActions";
 import toast from "react-hot-toast";
-import { Description } from "@headlessui/react";
 import { InlineError } from "../../../Components/Notfications/Error";
 import { useForm } from "react-hook-form";
 import { Imagepreview } from "../../../Components/ImagePreview";
+import user from "../../../Assets/user.jpg"
 
 const AddMovie = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -215,7 +215,7 @@ const AddMovie = () => {
                     src={`${
                       user?.image
                         ? user.image
-                        : "../../../../public/favicon.png"
+                        : user
                     }`}
                     alt={user.name}
                     className="w-full h-24 object-cover rounded mb-4"
