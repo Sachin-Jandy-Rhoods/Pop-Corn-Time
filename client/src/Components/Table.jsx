@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
 const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
 
-const Rows = (movie, i,onDeleteHandler, admin) => {
+const Rows = (movie, i, onDeleteHandler, admin) => {
   return (
     <tr key={i}>
       <td className={`${Text}`}>
@@ -27,9 +27,12 @@ const Rows = (movie, i,onDeleteHandler, admin) => {
       <td className={`${Text} float-right flex-rows gap-2`}>
         {admin ? (
           <>
-            <button className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
+            <Link
+              to={`/edit/${movie?._id}`}
+              className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2"
+            >
               Edit <FiEdit className="text-green-500" />
-            </button>
+            </Link>
             <button
               onClick={() => onDeleteHandler(movie?._id)}
               className="bg-subMain text-white rounded flex-colo w-6 h-6 "
