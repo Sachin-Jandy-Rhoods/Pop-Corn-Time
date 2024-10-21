@@ -13,7 +13,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, isError, userInfo, isSuccess } = useSelector(
@@ -30,32 +29,32 @@ const Register = () => {
   });
   //onSubmit
   const onSubmit = async (data) => {
-    dispatch(registerAction(data))
+    dispatch(registerAction(data));
   };
   //useEffect
-  useEffect(()=>{
-    if(userInfo?.isAdmin){
-      navigate("/dashboard")
+  useEffect(() => {
+    if (userInfo?.isAdmin) {
+      navigate("/dashboard");
+    } else if (userInfo) {
+      navigate("/profile");
     }
-    else if(userInfo){
-      navigate("/profile")
+    if (isSuccess) {
+      toast.success(`Welcome ${userInfo?.fullName}`);
+      dispatch({ type: "USER_REGISTER_RESET" });
     }
-    if(isSuccess){
-     toast.success(`Welcome ${userInfo?.fullName}`)
-     dispatch({type:"USER_REGISTER_RESET"})
+    if (isError) {
+      toast.error(isError);
+      dispatch({ type: "USER_REGISTER_RESET" });
     }
-    if(isError){
-      toast.error(isError)
-      dispatch({type:"USER_REGISTER_RESET"})
-    }
-  },[userInfo,isSuccess,isError, navigate, dispatch])
+  }, [userInfo, isSuccess, isError, navigate, dispatch]);
 
   return (
-
     <Layout>
       <div className="container mx-auto px-2 my-24 flex-colo">
-      <form
-          onSubmit={handleSubmit(onSubmit)} className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:3/5 bg-dry rounded-lg border border-border">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:3/5 bg-dry rounded-lg border border-border"
+        >
           <img src={logo} alt="logo" className="w-1/4 h-16 object-cover" />
           <div className="w-full">
             <Input
@@ -68,7 +67,7 @@ const Register = () => {
             />
             {errors.fullName && <InlineError text={errors.fullName.message} />}
           </div>
-      
+
           <div className="w-full">
             <Input
               label="Email"
@@ -92,24 +91,26 @@ const Register = () => {
             {errors.password && <InlineError text={errors.password.message} />}
           </div>
           <button
-          type="submit"
-           disabled={isLoading} className="bg-subMain transition hover:bg-main flex-rows gap-4 text-white p-4 rounded-lg w-full">
-          {
+            type="submit"
+            disabled={isLoading}
+            className="bg-subMain transition hover:bg-main flex-rows gap-4 text-white p-4 rounded-lg w-full"
+          >
+            {
               //if loading show loading
-              isLoading?(
+              isLoading ? (
                 "Loading..."
-              ):(
+              ) : (
                 <>
                   <FiLogIn /> Sign Up
                 </>
               )
             }
-          
           </button>
           <p className="text-center text-border">
             Already have an account?{" "}
             <Link to="/login" className="text-dryGray font-semibold ml-2">
-           Sign In </Link>
+              Sign In{" "}
+            </Link>
           </p>
         </form>
       </div>

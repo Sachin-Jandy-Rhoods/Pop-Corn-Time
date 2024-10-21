@@ -10,8 +10,8 @@ import {
   loginUser,
   registerUser,
   updateUserProfile,
-} from "../Controllers/UserController.js";                                     
-import { protect,admin} from "../middlewares/Auth.js";
+} from "../Controllers/UserController.js";
+import { protect, admin } from "../middlewares/Auth.js";
 
 const router = express.Router();
 
@@ -25,8 +25,8 @@ router.delete("/", protect, deleteUserProfile);
 router.put("/", protect, updateUserProfile);
 router.put("/password", protect, changeUserPassword);
 router.get("/favorites", protect, getLikedMovies);
-router.post("/favorites", protect, addLikedMovie)
-router.delete("/favorites", protect, deleteLikedMovies)
+router.post("/favorites", protect, addLikedMovie);
+router.delete("/favorites", protect, deleteLikedMovies);
 
 //Admin Routes
 

@@ -3,7 +3,7 @@ import Titles from "../Titles";
 import { FaUserFriends } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import userImage from "../../Assets/favicon.png"
+import userImage from "../../Assets/favicon.png";
 
 const MovieCasts = ({ movie }) => {
   return (
@@ -43,9 +43,7 @@ const MovieCasts = ({ movie }) => {
               <SwiperSlide key={cast?._id}>
                 <div className="w-full p-3 italic text-xs text-text rounded flex-colo bg-dry border border-gray-800">
                   <img
-                    src={
-                      cast?.image ? cast?.image : userImage
-                    }
+                    src={cast?.image ? cast?.image : userImage}
                     alt={cast?.name}
                     className="w-full h-64 object-cover rounded mb-4"
                   />

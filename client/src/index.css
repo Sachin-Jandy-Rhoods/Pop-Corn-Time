@@ -3,46 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body, html{
-  font-family: 'poppins',sans-serif;
+body,
+html {
+  font-family: "poppins", sans-serif;
   font-weight: 400;
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   outline: 0 !important;
   box-shadow: none !important;
 }
 
 /* Basic class for tailwind */
 
-.linear-bg{
-  background: linear-gradient(269.82deg,#07091c00 0.17%,#080a1ad6 99.87%);
+.linear-bg {
+  background: linear-gradient(269.82deg, #07091c00 0.17%, #080a1ad6 99.87%);
 }
 
-.hoveres{
-  @apply hidden
+.hoveres {
+  @apply hidden;
 }
 
-.hovered:hover .hoveres{
-  @apply flex-colo
+.hovered:hover .hoveres {
+  @apply flex-colo;
 }
 
 .flex-colo {
   @apply flex flex-col justify-center items-center;
-  }
-  .flex-rows {
+}
+.flex-rows {
   @apply flex flex-row justify-center items-center;
-  }
-  .flex-btn {
+}
+.flex-btn {
   @apply flex justify-between items-center;
-  }
-  .transitions {
+}
+.transitions {
   @apply transition duration-300 ease-in;
-  }
-  /* .zIndex {
+}
+/* .zIndex {
     z-index: 1000;
   } */
-  body::-webkit-scrollbar {
-    display: none;  /* For Chrome, Safari, and Opera */
-  }
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

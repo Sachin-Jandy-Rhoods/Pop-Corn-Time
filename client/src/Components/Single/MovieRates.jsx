@@ -3,17 +3,16 @@ import Titles from "../Titles";
 import { BsBookmarkStarFill } from "react-icons/bs";
 import { Message, Select } from "../UsedInputs";
 import Rating from "../Stars";
-import { UsersData } from "../../Data/MoviesData";
 import { Empty } from "../Notfications/Empty";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ReviewValidation } from "../Validation/MovieValidation";
 import { InlineError } from "../Notfications/Error";
-import { Link } from "react-router-dom"
-import { reviewMovieAction } from "../../Redux/Actions/MoviesActions"
+import { Link } from "react-router-dom";
+import { reviewMovieAction } from "../../Redux/Actions/MoviesActions";
 import toast from "react-hot-toast";
-import userImage from "../../Assets/user.jpg"
+import userImage from "../../Assets/user.jpg";
 
 const Ratings = [
   {
@@ -60,11 +59,13 @@ const MovieRates = ({ movie }) => {
     resolver: yupResolver(ReviewValidation),
   });
   //onSubmit
-  const onSubmit = async (data) => {    
-    dispatch(reviewMovieAction({
+  const onSubmit = async (data) => {
+    dispatch(
+      reviewMovieAction({
         id: movie?._id,
-        review: { ...data }
-    }))
+        review: { ...data },
+      })
+    );
   };
 
   useEffect(() => {
@@ -107,28 +108,32 @@ const MovieRates = ({ movie }) => {
           </div>
           {/* message */}
           <div className="w-full">
-          <Message name="comment"
-              register={{ ...register("comment") }} label="Message" placeholder="Make it short and sweet...." />
-              {errors.comment && <InlineError text={errors.comment.message} />
-              }
+            <Message
+              name="comment"
+              register={{ ...register("comment") }}
+              label="Message"
+              placeholder="Make it short and sweet...."
+            />
+            {errors.comment && <InlineError text={errors.comment.message} />}
           </div>
           {/* submit */}
-          {
-            userInfo ? (
-              <button disabled={isLoading} type="submit" className="bg-subMain text-white py-4 w-full flex-colo rounded">
-              {
-                isLoading ? "Loading..." : "Submit"
-              }
+          {userInfo ? (
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="bg-subMain text-white py-4 w-full flex-colo rounded"
+            >
+              {isLoading ? "Loading..." : "Submit"}
             </button>
-            )
-            :(
-              <Link to="/login"
-              type="submit" className="bg-main border border-dashed border-border  text-subMain py-4 w-full flex-colo rounded">
+          ) : (
+            <Link
+              to="/login"
+              type="submit"
+              className="bg-main border border-dashed border-border  text-subMain py-4 w-full flex-colo rounded"
+            >
               Login to review this movie
             </Link>
-            )
-          }
-
+          )}
         </form>
         {/* Reviewers */}
         <div className="col-span-3 flex w-full flex-col gap-6">

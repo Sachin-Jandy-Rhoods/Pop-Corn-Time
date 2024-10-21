@@ -93,10 +93,7 @@ const CastsModal = ({ modalOpen, setModalOpen, cast }) => {
           <div className="flex flex-col gap-2">
             <p className="text-border font-semibold text-sm">Cast Image</p>
             <Uploder setImageUrl={setCastImage} />
-            <Imagepreview
-              image={image ? image : userImage}
-              name="castImage"
-            />
+            <Imagepreview image={image ? image : userImage} name="castImage" />
           </div>
           <button
             type="submit"

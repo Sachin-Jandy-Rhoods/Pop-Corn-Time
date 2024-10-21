@@ -21,17 +21,19 @@ export const getAllCategoriesAction = () => async (dispatch) => {
 // create category action
 
 export const createCategoryAction = (title) => async (dispatch, getState) => {
-    try {
-        dispatch({ type: CategoriesConstants.CREATE_CATEGORY_REQUEST });
-        await CategoriesAPIs.createCategoryService(title, tokenProtection(getState));
-        dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
-        toast.success("Category created successfully");
-        dispatch(getAllCategoriesAction())
-    } catch (error) {
-        ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
-    }
+  try {
+    dispatch({ type: CategoriesConstants.CREATE_CATEGORY_REQUEST });
+    await CategoriesAPIs.createCategoryService(
+      title,
+      tokenProtection(getState)
+    );
+    dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
+    toast.success("Category created successfully");
+    dispatch(getAllCategoriesAction());
+  } catch (error) {
+    ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
+  }
 };
-
 
 //UPDATE CATEGORY ACTION
 export const updateCategoryAction =
@@ -45,7 +47,7 @@ export const updateCategoryAction =
       );
       dispatch({ type: CategoriesConstants.UPDATE_CATEGORY_SUCCESS });
       toast.success("Category updated Succesfully");
-      dispatch(getAllCategoriesAction())
+      dispatch(getAllCategoriesAction());
     } catch (error) {
       ErrorsAction(error, dispatch, CategoriesConstants.UPDATE_CATEGORY_FAIL);
     }
@@ -58,7 +60,7 @@ export const deleteCategoryAction = (id) => async (dispatch, getState) => {
     await CategoriesAPIs.deleteCategoryService(id, tokenProtection(getState));
     dispatch({ type: CategoriesConstants.DELETE_CATEGORY_SUCCESS });
     toast.success("Category deleted Succesfully");
-    dispatch(getAllCategoriesAction()) 
+    dispatch(getAllCategoriesAction());
   } catch (error) {
     ErrorsAction(error, dispatch, CategoriesConstants.DELETE_CATEGORY_FAIL);
   }

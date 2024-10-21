@@ -1,22 +1,20 @@
-import React from 'react'
-import Navbar from './Navbar/Navbar'
-import Footer from './Footer/Footer'
-import MobileFooter from './Footer/MobileFooter'
+import React from "react";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
+import MobileFooter from "./Footer/MobileFooter";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
-    <div className="bg-main text-white">
-
-        <Navbar/>
+      <div className="bg-main text-white">
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
         {/* {mobile footer} */}
-        <MobileFooter/>
-
-    </div>
+        <MobileFooter />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

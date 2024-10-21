@@ -6,10 +6,9 @@ import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { RiMovie2Line } from "react-icons/ri";
 import Loader from "../Notfications/Loader";
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { IfMovieLiked, LikedMovie } from "../../Context/Functionalities";
-import userImage from  "../../Assets/favicon.png"
-
+import userImage from "../../Assets/favicon.png";
 
 const Swipper = ({ sameClass, movies, likedMovies }) => {
   const { isLoading } = useSelector((state) => state.userLikeMovie);
@@ -69,7 +68,6 @@ const Swipper = ({ sameClass, movies, likedMovies }) => {
   );
 };
 
-
 const Banner = ({ movies, isLoading }) => {
   const sameClass = "w-full flex-colo xl:h-96 bg-dry lg:h-64 h-48";
   const { likedMovies } = useSelector((state) => state.userGetFavoriteMovies); // Get likedMovies from Redux
@@ -82,7 +80,11 @@ const Banner = ({ movies, isLoading }) => {
           <Loader />
         </div>
       ) : movies?.length > 0 ? (
-        <Swipper sameClass={sameClass} movies={movies} likedMovies={likedMovies} /> // Pass likedMovies to Swipper
+        <Swipper
+          sameClass={sameClass}
+          movies={movies}
+          likedMovies={likedMovies}
+        /> // Pass likedMovies to Swipper
       ) : (
         <div className={sameClass}>
           <div className="flex-colo w-24 h-24 p-5 mb-4 rounded-full bg-dry text-subMain text-4xl">
@@ -96,6 +98,5 @@ const Banner = ({ movies, isLoading }) => {
     </div>
   );
 };
-
 
 export default Banner;

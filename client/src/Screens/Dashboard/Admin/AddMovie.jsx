@@ -194,7 +194,7 @@ const AddMovie = () => {
               </div>
             )}
           </div>
-          <Uploder setImageUrl={setVideoUrl} />
+          <Uploder setImageUrl={setVideoUrl} content={"Drag your video here"} accept={"Only .mp4 files will be accepted"} />
         </div>
         {/* CASTS  */}
         <div className="w-full grid lg:grid-cols-2 gap-6 items-start">

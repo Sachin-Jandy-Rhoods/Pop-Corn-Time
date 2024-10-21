@@ -12,14 +12,14 @@ export const Message = ({ label, placeholder, name, register }) => {
   );
 };
 
-export const Select = ({ label, options,  register,
-  name}) => {
+export const Select = ({ label, options, register, name }) => {
   return (
     <>
       <label className="text-border font-semibold">{label}</label>
       <select
         className="w-full mt-2 px-6 py-4 text-text bg-main border border-border rounded"
-        {...register} name={name}
+        {...register}
+        name={name}
       >
         {options.map((o, i) => (
           <option key={i} value={o.value}>

@@ -10,43 +10,42 @@ import { LoginValidation } from "../Components/Validation/UserValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { InlineError } from "../Components/Notfications/Error";
 import { loginAction } from "../Redux/Actions/userActions";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { isLoading, isError, userInfo, isSuccess } = useSelector(
-      (state) => state.userLogin
-    );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoading, isError, userInfo, isSuccess } = useSelector(
+    (state) => state.userLogin
+  );
 
-    //validate user
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm({
-      resolver: yupResolver(LoginValidation),
-    });
-    //onSubmit
-    const onSubmit = async (data) => {
-      dispatch(loginAction(data))
-    };
+  //validate user
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(LoginValidation),
+  });
+  //onSubmit
+  const onSubmit = async (data) => {
+    dispatch(loginAction(data));
+  };
   //useEffect
-  useEffect(()=>{
-    if(userInfo?.isAdmin){
-      navigate("/dashboard")
+  useEffect(() => {
+    if (userInfo?.isAdmin) {
+      navigate("/dashboard");
+    } else if (userInfo) {
+      navigate("/profile");
     }
-    else if(userInfo){
-      navigate("/profile")
+    if (isSuccess) {
+      toast.success(`Welcome back ${userInfo?.fullName}`);
     }
-    if(isSuccess){
-     toast.success(`Welcome back ${userInfo?.fullName}`)
+    if (isError) {
+      toast.error(isError);
+      dispatch({ type: "USER_LOGIN_RESET" });
     }
-    if(isError){                        
-      toast.error(isError)
-      dispatch({type:"USER_LOGIN_RESET"})
-    }
-  },[userInfo,isSuccess,isError, navigate, dispatch])
+  }, [userInfo, isSuccess, isError, navigate, dispatch]);
   return (
     <Layout>
       <div className="container mx-auto px-2 my-24 flex-colo">
@@ -84,9 +83,9 @@ const Login = () => {
           >
             {
               //if loading show loading
-              isLoading?(
+              isLoading ? (
                 "Loading..."
-              ):(
+              ) : (
                 <>
                   <FiLogIn /> Sign In
                 </>

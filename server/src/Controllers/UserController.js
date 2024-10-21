@@ -198,56 +198,56 @@ const getLikedMovies = asyncHandler(async (req, res) => {
 // @access private
 
 const addLikedMovie = asyncHandler(async (req, res) => {
-    const { movieId } = req.body;
-    try {
-      // find usre in db
-      const user = await User.findById(req.user._id);
-      // if user exists add movie to liked movies and save it in db
-      if (user) {
-        // check if movie already liked
-        // IF movie already liked send error message
-        if (user.likedMovies.includes(movieId)) {
-          res.status(400);
-          throw new Error("Movie alreay liked");
-        }
-        // else add movie to liked movies and save it in DB
-        user.likedMovies.push(movieId);
-        await user.save();
-        res.json(user.likedMovies);
+  const { movieId } = req.body;
+  try {
+    // find usre in db
+    const user = await User.findById(req.user._id);
+    // if user exists add movie to liked movies and save it in db
+    if (user) {
+      // check if movie already liked
+      // IF movie already liked send error message
+      if (user.likedMovies.includes(movieId)) {
+        res.status(400);
+        throw new Error("Movie alreay liked");
       }
-        // else send error message
-        else {
-          res.status(404);
-          throw new Error("Movie not found");
-        }
-    } catch (error) {
-      res.status(400).json({ message: error.message });
+      // else add movie to liked movies and save it in DB
+      user.likedMovies.push(movieId);
+      await user.save();
+      res.json(user.likedMovies);
     }
-  });
+    // else send error message
+    else {
+      res.status(404);
+      throw new Error("Movie not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 // @desc Delete all liked movies
 // @desc DELETE /api/users/favorites
 // @access Private
 
-const deleteLikedMovies = asyncHandler (async (req, res) => {
-    try {
-        // find user in DB
-        const user = await User.findById(req.user._id)
-        // if user exists delete all liked movies and save it in DB
-        if(user){
-            user.likedMovies = [];
-            await user.save();
-            res.json({message:"Your favorite movies deleted Successfully"});
-        }
-        // else send error message
-        else{
-            res.status(404)
-            throw new Error("User not found")
-        }
-    } catch (error) {
-        res.status(400).json({ message:error.message})
+const deleteLikedMovies = asyncHandler(async (req, res) => {
+  try {
+    // find user in DB
+    const user = await User.findById(req.user._id);
+    // if user exists delete all liked movies and save it in DB
+    if (user) {
+      user.likedMovies = [];
+      await user.save();
+      res.json({ message: "Your favorite movies deleted Successfully" });
     }
-})
+    // else send error message
+    else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 /// ******* Admin controllers
 
@@ -255,47 +255,44 @@ const deleteLikedMovies = asyncHandler (async (req, res) => {
 //@route GET /api/users
 //@access Private/Admin
 
-const getUsers = asyncHandler(async(req,res)=>{
-    try{
-        //find  all users in db
-        const users = await User.find({});
-        res.json(users)
-        }catch(error){
-            res.status(400).json({message: error.message})
-        }
-
-})
-
+const getUsers = asyncHandler(async (req, res) => {
+  try {
+    //find  all users in db
+    const users = await User.find({});
+    res.json(users);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 //desc delete user
 //@route DELETE /api/users/:id
 //@access Private/Admin
 
-const deleteUser = asyncHandler(async(req,res)=>{
-    try {
-        //find user in db
-        const user = await User.findById(req.params.id);
-        //if user exits delete user from db
-        if(user){
-            //if user is the admin throw the error message
-            if(user.isAdmin){
-                res.status(400);
-                throw new Error("Can't delete admin user");
-            }
-            //else delete user from db
-            await user.deleteOne();
-            res.json({message: "User delete successfully"})
-        }
-        //else send error message
-        else{
-            res.status(404);
-            throw new Error("User not found")
-        }
-    } catch (error) {
-        res.status(400).json({message: error.message})
+const deleteUser = asyncHandler(async (req, res) => {
+  try {
+    //find user in db
+    const user = await User.findById(req.params.id);
+    //if user exits delete user from db
+    if (user) {
+      //if user is the admin throw the error message
+      if (user.isAdmin) {
+        res.status(400);
+        throw new Error("Can't delete admin user");
+      }
+      //else delete user from db
+      await user.deleteOne();
+      res.json({ message: "User delete successfully" });
     }
-})
-
+    //else send error message
+    else {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 export {
   registerUser,
@@ -307,5 +304,5 @@ export {
   addLikedMovie,
   deleteLikedMovies,
   getUsers,
-  deleteUser
+  deleteUser,
 };

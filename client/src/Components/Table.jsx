@@ -6,10 +6,9 @@ import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
 const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
 const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
-import userImage from "../Assets/favicon.png"
+import userImage from "../Assets/favicon.png";
 
-
-const Rows = (movie, i,onDeleteHandler, admin, downloadVideo, progress) => {
+const Rows = (movie, i, onDeleteHandler, admin, downloadVideo, progress) => {
   return (
     <tr key={i}>
       <td className={`${Text}`}>
@@ -44,10 +43,11 @@ const Rows = (movie, i,onDeleteHandler, admin, downloadVideo, progress) => {
           </>
         ) : (
           <>
-            <button 
+            <button
               disabled={progress > 0 && progress < 100}
-              onClick={()=> downloadVideo(movie?.video, movie?.name)}
-               className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
+              onClick={() => downloadVideo(movie?.video, movie?.name)}
+              className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2"
+            >
               Download
               <FaCloudDownloadAlt className="text-green-500" />
             </button>
@@ -64,7 +64,7 @@ const Rows = (movie, i,onDeleteHandler, admin, downloadVideo, progress) => {
   );
 };
 
-const Table = ({ data, admin, onDeleteHandler,downloadVideo,progress }) => {
+const Table = ({ data, admin, onDeleteHandler, downloadVideo, progress }) => {
   return (
     <div className="overflow-x-scroll sm:overflow-hidden relative w-full">
       <table className="w-full table-auto border-border divide-y divide-border">
@@ -94,7 +94,9 @@ const Table = ({ data, admin, onDeleteHandler,downloadVideo,progress }) => {
           </tr>
         </thead>
         <tbody className="bg-main divide-y divide-gray-800">
-          {data.map((movie, i) => Rows(movie, i, onDeleteHandler, admin, downloadVideo, progress))}
+          {data.map((movie, i) =>
+            Rows(movie, i, onDeleteHandler, admin, downloadVideo, progress)
+          )}
         </tbody>
       </table>
     </div>

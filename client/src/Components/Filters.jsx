@@ -27,7 +27,7 @@ const Filters = (props) => {
     times,
     setTimes,
     rates,
-    setRates
+    setRates,
   } = props?.data;
 
   const Filter = [
@@ -60,7 +60,6 @@ const Filters = (props) => {
       items: RatesData,
     },
   ];
-  
 
   return (
     <div className="my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-5 grid-cols-2 lg:gap-12 gap-2 rounded p-6">

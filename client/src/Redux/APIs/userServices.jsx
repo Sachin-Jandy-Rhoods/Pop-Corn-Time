@@ -90,7 +90,7 @@ const likeMovieService = async (movieId, token) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  
+
   return data;
 };
 
@@ -127,5 +127,5 @@ export {
   deleteFavoriteMovies,
   getAllUsersService,
   deleteUserService,
-  likeMovieService
+  likeMovieService,
 };

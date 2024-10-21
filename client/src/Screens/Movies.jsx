@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Layout from "../Layout/Layout";
 import Filters from "../Components/Filters";
-import { Movies } from "../Data/MoviesData";
 import Movie from "../Components/Movie";
 import { useDispatch, useSelector } from "react-redux";
 import { TbPlayerTrackNext, TbPlayerTrackPrev } from "react-icons/tb";
@@ -89,7 +88,6 @@ const MoviesPage = () => {
     year: year,
     setYear: setYear,
   };
-  
 
   return (
     <Layout>

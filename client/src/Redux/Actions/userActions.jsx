@@ -199,5 +199,5 @@ export {
   deleteFavoriteMoviesAction,
   getAllUsersAction,
   deleteUserAction,
-  likeMovieAction
+  likeMovieAction,
 };

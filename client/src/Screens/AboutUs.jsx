@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../Layout/Layout";
 import Head from "../Components/Head";
-import about from "../Assets/about.jpg"
+import about from "../Assets/about.jpg";
 
 const AboutUs = () => {
   return (
