@@ -13,6 +13,7 @@ import {
 import { InlineError } from "../Notfications/Error.jsx";
 import { Imagepreview } from "../ImagePreview.jsx";
 import toast from "react-hot-toast";
+import userImage from "../../Assets/favicon.png";
 
 const CastsModal = ({ modalOpen, setModalOpen, cast }) => {
   const dispatch = useDispatch();
@@ -93,7 +94,7 @@ const CastsModal = ({ modalOpen, setModalOpen, cast }) => {
             <p className="text-border font-semibold text-sm">Cast Image</p>
             <Uploder setImageUrl={setCastImage} />
             <Imagepreview
-              image={image ? image : "../../../public/favicon.png"}
+              image={image ? image : userImage}
               name="castImage"
             />
           </div>

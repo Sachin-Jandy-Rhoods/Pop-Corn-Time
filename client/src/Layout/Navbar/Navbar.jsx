@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaHeart, FaSearch } from "react-icons/fa";
 import { CgUser } from "react-icons/cg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../../../public/logo.png";
+import logo from "../../Assets/logo.png";
 import { useSelector } from "react-redux";
 import user from "../../Assets/user.jpg";
 

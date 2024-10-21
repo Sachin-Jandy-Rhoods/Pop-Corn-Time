@@ -8,6 +8,7 @@ import { getMovieByIdAction } from "../Redux/Actions/MoviesActions";
 import { RiMovie2Line } from "react-icons/ri";
 import Loader from "../Components/Notfications/Loader";
 import { IfMovieLiked, LikedMovie } from "../Context/Functionalities";
+import userImage from "../Assets/favicon.png"
 
 const WatchPage = () => {
   let { id } = useParams();
@@ -95,7 +96,7 @@ const WatchPage = () => {
                     src={
                       movie?.image
                         ? `${movie?.image}`
-                        : "images/user.png"
+                        : userImage
                     }
                     alt={movie?.name}
                     className="w-full h-full object-cover rounded-lg"

@@ -1,11 +1,12 @@
 import React from 'react'
+import head from "../Assets/head.jpg"
 
 
 const Head = ({title}) => {
   return (
     <div className='w-full bg-deepGray lg:h-64 relative overflow-hidden rounded-md'>
         <img 
-         src="../../public/head.jpg" 
+         src={head} 
          alt="aboutus"
          className='w-full h-full object-cover '
          />

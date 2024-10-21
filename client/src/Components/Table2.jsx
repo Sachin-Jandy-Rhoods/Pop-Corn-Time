@@ -2,6 +2,8 @@ import React from 'react'
 import { FiEdit } from 'react-icons/fi';
 import {MdDelete} from 'react-icons/md';
 import { DateFormat, shortUppercaseId } from './Notfications/Empty';
+import userImage from "../Assets/favicon.png"
+
 
 const Head = "text-xs text-left text-dry font-semibold px-6 py-2 uppercase";
 const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
@@ -17,7 +19,7 @@ const Rows = ({data, i, users, OnEditFunction,onDeleteFunction}) =>{
                         <td className={`${Text}`}>
                 <div className='w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden'>
                 <img className='h-full w-full object-cover'
-                src={`${data?.image ? data.image : "../../public/user.png"}`}
+                src={`${data?.image ? data.image : userImage}`}
                  alt={data?.fullName} />
                 </div>
                 

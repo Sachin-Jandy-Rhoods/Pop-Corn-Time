@@ -14,6 +14,7 @@ import { Empty } from "../Notfications/Empty";
 import Loader from "../Notfications/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { IfMovieLiked, LikedMovie } from "../../Context/Functionalities";
+import userImage from "../../Assets/favicon.png"
 
 const SwiperTop = ({ prevEl, nextEl, movies }) => {
   const {isLoading} = useSelector((state)=>state.userLikeMovie)
@@ -52,7 +53,7 @@ const isLiked = (movie) => {return (IfMovieLiked(movie))}
         <SwiperSlide key={index}>
           <div className="p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
             <img
-              src={movie?.titleImage ? movie.titleImage : "/images/user.png"}
+              src={movie?.titleImage ? movie.titleImage : userImage}
               alt={movie?.name}
               className="w-full h-full object-cover rounded-lg"
             />
