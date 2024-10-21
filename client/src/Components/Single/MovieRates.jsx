@@ -13,6 +13,7 @@ import { InlineError } from "../Notfications/Error";
 import { Link } from "react-router-dom"
 import { reviewMovieAction } from "../../Redux/Actions/MoviesActions"
 import toast from "react-hot-toast";
+import userImg from "../../Assets/user.jpg"
 
 const Ratings = [
   {
@@ -143,7 +144,7 @@ const MovieRates = ({ movie }) => {
                 >
                   <div className="col-span-2 bg-main hidden md:block">
                     <img
-                      src={review?.userImage ? review.userImage : "user.jpg"}
+                      src={review?.userImage ? review.userImage : userImg}
                       alt={review?.userName}
                       className="w-full h-24 rounded-lg object-cover"
                     />

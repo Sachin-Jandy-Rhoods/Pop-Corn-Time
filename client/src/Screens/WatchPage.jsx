@@ -94,7 +94,7 @@ const WatchPage = () => {
                   <img
                     src={
                       movie?.image
-                        ? `../../../public/images/${movie?.image}`
+                        ? `${movie?.image}`
                         : "images/user.png"
                     }
                     alt={movie?.name}

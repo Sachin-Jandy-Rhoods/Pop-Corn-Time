@@ -28,10 +28,10 @@ const rootReducers = combineReducers({
    getTopRatedMovie: movies.movieTopRatedReducer,
    createReview: movies.createReviewReducer,
    createMovie: movies.createMovieReducer,
-   casts: movies.CastsReducer
- ,
+   casts: movies.CastsReducer,
    deleteMovie:movies.deleteMovieReducer,
-   deleteAllMovies:movies.deleteAllMoviesReducer
+   deleteAllMovies:movies.deleteAllMoviesReducer,
+   updateMovie: movies.updateMovieReducer,
 });
 
 
