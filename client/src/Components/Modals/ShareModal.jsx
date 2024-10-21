@@ -20,15 +20,7 @@ const ShareMovieModal = ({ modalOpen, setModalOpen, movie }) => {
         },
         {
             icon:FaWhatsapp,
-            shareButton:FacebookShareButton
-        },
-        {
-            icon:FaTwitter,
-            shareButton:WhatsappShareButton 
-        },
-        {
-            icon:FaPinterest,
-            shareButton:PinterestShareButton
+            shareButton:WhatsappShareButton
         },
         {
             icon:MdEmail,
