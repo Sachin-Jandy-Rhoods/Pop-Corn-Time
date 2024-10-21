@@ -2,7 +2,7 @@ import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FlexMovieItems from "../FlexMovieItems";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { RiMovie2Line } from "react-icons/ri";
 import Loader from "../Notfications/Loader";
@@ -77,6 +77,7 @@ const Banner = ({ movies, isLoading }) => {
     <div className="relative w-full">
       {isLoading ? (
         <div className={sameClass}>
+          <Loader />
           <Loader />
         </div>
       ) : movies?.length > 0 ? (

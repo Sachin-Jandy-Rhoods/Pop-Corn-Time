@@ -2,15 +2,15 @@ import React from "react";
 import FlexMovieItems from "../FlexMovieItems";
 import { FaPlay, FaShareAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {FiLogIn} from "react-icons/fi"
-import userimage from "../../../public/favicon.png"
+import { FiLogIn } from "react-icons/fi";
+import userimage from "../../../public/favicon.png";
 import Rating from "../Stars";
 
 const MovieInfo = ({ movie, setModalOpen }) => {
   return (
     <div className="w-full xl:h-screen relative text-white">
       <img
-        src={movie?.image?`../../../public/images/${movie?.image}`:"../../../public/favicon.png"}
+        src={movie?.image ? movie?.image : "../../../public/favicon.png"}
         alt={movie?.name}
         className="w-full hidden xl:inline-block h-full object-cover"
       />
@@ -18,7 +18,11 @@ const MovieInfo = ({ movie, setModalOpen }) => {
         <div className="container px-3 mx-auto 2xl:px-32 xl:grid grid-cols-3 flex-colo py-10 lg:py-20 gap-8">
           <div className="xl:col-span-1 w-full xl:order-none order-last h-header bg-dry border border-gray-800 rounded-lg overflow-hidden">
             <img
-              src={movie?.titleImage?`../../../public/images/${movie?.titleImage}`:"../../../public/favicon.png"}
+              src={
+                movie?.titleImage
+                  ? movie?.titleImage
+                  : "../../../public/favicon.png"
+              }
               alt={movie?.name}
               className="w-full h-full object-cover"
             />
@@ -41,7 +45,10 @@ const MovieInfo = ({ movie, setModalOpen }) => {
               <div className="grid sm:grid-cols-5 grid-cols-3 gap-4 p-6 bg-main border border-gray-800 rounded-lg ">
                 {/* share */}
                 <div className="col-span-1 flex-colo border-r border-border">
-                  <button onClick={() => setModalOpen(true)} className="w-10 h-10 flex-colo rounded-lg bg-white bg-opacity-20">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="w-10 h-10 flex-colo rounded-lg bg-white bg-opacity-20"
+                  >
                     <FaShareAlt />
                   </button>
                 </div>
@@ -54,23 +61,25 @@ const MovieInfo = ({ movie, setModalOpen }) => {
                 </div>
                 {/* watch button */}
                 <div className="sm:col-span-2 col-span-3 flex justify-end font-medium text-sm">
-                    <Link to={`/watch/${movie?._id}`} className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3">
+                  <Link
+                    to={`/watch/${movie?._id}`}
+                    className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3"
+                  >
                     <FaPlay /> Watch
-                    </Link>
+                  </Link>
                 </div>
               </div>
               {/* ratings */}
               <div className="flex mb-6 text-lg gap-2 text-star">
-                <Rating value={movie?.rate}/>
+                <Rating value={movie?.rate} />
               </div>
-
             </div>
             <div className="col-span-2 md:mt-0 mt-2 flex justify-end">
-                <button className="md:w-1/4 w-full relative flex-colo bg-subMain hover:bg-transparent border-2 border-subMain transitions md:h-64 h-20 rounded font-medium ">
+              <button className="md:w-1/4 w-full relative flex-colo bg-subMain hover:bg-transparent border-2 border-subMain transitions md:h-64 h-20 rounded font-medium ">
                 <div className="flex-rows gap-6 text-md uppercase tracking-widest absolute md:rotate-90">
-                    Download <FiLogIn className="w-6 h-6" />
+                  Download <FiLogIn className="w-6 h-6" />
                 </div>
-                </button>
+              </button>
             </div>
           </div>
         </div>
