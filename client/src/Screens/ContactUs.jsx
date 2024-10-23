@@ -7,25 +7,26 @@ const ContactUs = () => {
     {
       id: 1,
       title: "Email Us",
-      info: "Interactive grow backend ideas for cross-platform models. ",
+      info: "For inquiries related to Popcorn Time's features or support, feel free to reach out.",
       icon: FiMail,
-      contact: "info@zpunet.com",
+      contact: "sachinjandyrhoods@gmail.com",
     },
     {
       id: 2,
       title: "Call Us",
-      info: "Distinctively exploit optimal alignment for intuitive bandwidth. ",
+      info: "Get in touch with our team for assistance with Popcorn Time's platform or troubleshooting.",
       icon: FiPhoneCall,
-      contact: "+255 789 456 123",
+      contact: "9342960049",
     },
     {
       id: 3,
       title: "Location",
-      info: "Dar es salam, Taznia. 345 kigamboni, street No. 12 Dar es salam, Taznia. 345 kigamboni, street No. 12 ",
+      info: "Headquartered in Dar es Salaam, Tanzania. Kigamboni Street No. 12, 345.",
       icon: FiMapPin,
       contact: "",
     },
   ];
+  
   return (
     <Layout>
       <div className="min-height-screen container mx-auto px-2 my-6">

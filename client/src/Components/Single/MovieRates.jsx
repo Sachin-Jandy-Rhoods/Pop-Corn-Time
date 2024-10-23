@@ -88,11 +88,7 @@ const MovieRates = ({ movie }) => {
             Review "{movie?.name}"
           </h3>
           <p className="text-sm leading-7 font-medium text-border">
-            Write a review for this movie. It will be posted on this page. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Tempora
-            cupiditate repellendus fugit incidunt odit iusto facere ab, hic,
-            libero porro natus voluptas quod voluptates quasi reprehenderit ea?
-            Aliquid, alias autem?
+            Write a review for this movie. It will be posted on this page.
           </p>
           <div className="text-sm w-full">
             <Select

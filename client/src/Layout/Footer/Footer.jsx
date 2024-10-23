@@ -101,12 +101,12 @@ const Footer = () => {
             </Link>
             <p className="leading-7 text-sm text-border md:mt-3">
               <span>
-                Dubai kuruku sandhu, Agra 200, <br /> Delhi, NY 10007
+                Sri Lanka, east street, Agra 200, <br /> Mumbai, NY 10007
               </span>
               <br />
               <span>Tell: 9342960049</span>
               <br />
-              <span>Email: sachin@gmail.com</span>
+              <span>Email: sachinjandyrhoods@gmail.com</span>
             </p>
           </div>
         </div>

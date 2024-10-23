@@ -29,10 +29,10 @@ const Rows = ({ data, i, users, OnEditFunction, onDeleteFunction }) => {
           <td className={`${Text}`}>{data.fullName}</td>
           <td className={`${Text}`}>{data.email}</td>
           <td className={`${Text} float-right flex-rows gap-2`}>
-            {!data.isAdmin && (
+            {!data?.isAdmin && (
               <button
                 onClick={() => onDeleteFunction(data?._id)}
-                className="bg-subMain text-white rounded flex-colo w-6 h-6 "
+                className="bg-subMain text-white rounded flex-colo w-6 h-6"
               >
                 <MdDelete />
               </button>
