@@ -59,7 +59,7 @@ const Register = () => {
           <div className="w-full">
             <Input
               label="FullName"
-              placeholder="Netflixo React tailwind"
+              placeholder="Popcorn Time"
               type="text"
               name="fullName"
               register={register("fullName")}
